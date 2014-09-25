@@ -30,6 +30,13 @@ class PhotoGallery
     @photos = photos
   end
 
+  def export(export_directory = default_directory_path)
+    self.export_directory = export_directory
+
+    # Write to the default HTML file
+    File.write(export_filepath, self.to_html)
+  end
+
   def to_html
     # Generate an array of <img> tags
     images = photos.map { |photo| img_tag(photo) }
@@ -38,6 +45,29 @@ class PhotoGallery
     html_template( title: "My Gallery",
                    custom_css: GALLERY_CSS,
                    content: images )
+  end
+
+private
+
+  def export_filepath
+    # The file where the generated HTML will be saved
+    File.join(export_directory, 'gallery.html')
+  end
+
+  attr_reader :export_directory
+
+  def export_directory=(directory)
+    # If the directory where the gallery will be exported to does not already
+    # exist, we need to create it.
+    Dir.mkdir(directory) unless Dir.exists?(directory)
+
+    @export_directory = directory
+  end
+
+  def default_directory_path
+    # The default save directory is called `public/` and lives in the root path
+    # of the application
+    File.expand_path('../public', __FILE__)
   end
 end
 
@@ -61,8 +91,11 @@ if __FILE__ == $PROGRAM_NAME
   # Build a new photo gallery
   gallery = PhotoGallery.new(absolute_paths_to_photos)
 
-  # Write a full HTML page to STDOUT with the list of <img> tags provided as the
-  # content of the page
-  puts gallery.to_html
+  # Export a full HTML page to the default directory with the list of <img> tags
+  # provided as the content of the page
+  gallery.export
+
+  # Exit process with a success message
+  exit 0
 end
 
