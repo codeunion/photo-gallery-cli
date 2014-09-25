@@ -16,10 +16,15 @@ module HTMLGenerator
 <html>
 <head>
   <title>My Gallery</title>
+  <style type="text/css" media="screen">
+    #{ _style }
+  </style>
 </head>
 <body>
-  <h1>My Gallery</h1>
-  #{ content.join("\n  ") }
+  <div class="container">
+    <h1>My Gallery</h1>
+    #{ content.join("\n    ") }
+  </div>
 </body>
 </html>
     HTML
@@ -31,6 +36,29 @@ module HTMLGenerator
     # Write an HTML <img> tag with the photo file provided
     # as the value for the src attribute
     "<img src=\"#{source_file}\">"
+  end
+
+  def _style
+    <<-CSS
+* {
+  font-family: "Helvetica", sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  width: 720px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  padding: 0px;
+  margin-right: 24px;
+  border: 3px solid #ccc;
+  border-radius: 2px;
+  box-shadow: 3px 3px 5px #ccc;
+}
+    CSS
   end
 end
 
