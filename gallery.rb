@@ -1,3 +1,12 @@
+#
+# HTML Photo Gallery Generator
+# ---
+# This program takes a set of images and generates an HTML image gallery.
+#
+# Usage:
+# $ ruby gallery.rb image.jpg pic.png funny.gif
+#
+
 def html_template(*content)
   # Use the heredoc syntax to create a multi-line string for defining the
   # template of the html page to be generated
