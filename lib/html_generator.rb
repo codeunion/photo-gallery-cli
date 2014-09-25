@@ -1,19 +1,38 @@
 module HTMLGenerator
-  def html_template(*content)
+  DEFAULT_CSS = <<-CSS
+    * {
+      font-family: "Helvetica", sans-serif;
+    }
+
+    .container {
+      margin: 0 auto;
+      width: 720px;
+    }
+  CSS
+
+  def html_template(options)
+    title      = options.fetch(:title)      { 'Page Title' }
+    custom_css = options.fetch(:custom_css) { '// no custom styles' }
+    content    = options.fetch(:content)    { ['Page Content'] }
+
     # Use the heredoc syntax to create a multi-line string for defining the
     # template of the html page to be generated
     layout = <<-HTML
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Gallery</title>
+  <title>#{ title }</title>
   <style type="text/css" media="screen">
-    #{ _style }
+    /* Default styles from HTMLGenerator */
+    #{ DEFAULT_CSS }
+
+    /* Custom styles */
+    #{ custom_css }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>My Gallery</h1>
+    <h1>#{ title }</h1>
     #{ content.join("\n    ") }
   </div>
 </body>
@@ -27,28 +46,5 @@ module HTMLGenerator
     # Write an HTML <img> tag with the photo file provided
     # as the value for the src attribute
     "<img src=\"#{source_file}\">"
-  end
-
-  def _style
-    <<-CSS
-* {
-  font-family: "Helvetica", sans-serif;
-}
-
-.container {
-  margin: 0 auto;
-  width: 720px;
-}
-
-img {
-  width: 200px;
-  height: 200px;
-  padding: 0px;
-  margin-right: 24px;
-  border: 3px solid #ccc;
-  border-radius: 2px;
-  box-shadow: 3px 3px 5px #ccc;
-}
-    CSS
   end
 end
