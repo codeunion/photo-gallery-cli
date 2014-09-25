@@ -1,4 +1,4 @@
-def html_template(content)
+def html_template(*content)
   # Use the heredoc syntax to create a multi-line string for defining the
   # template of the html page to be generated
   layout = <<-HTML
@@ -9,7 +9,7 @@ def html_template(content)
 </head>
 <body>
   <h1>My Gallery</h1>
-  #{content}
+  #{ content.join("\n  ") }
 </body>
 </html>
   HTML
@@ -34,14 +34,17 @@ end
 # in this file, they can `require` the file _without_ actually executing
 # the code below, which expects an argument and writes to STDOUT.
 if __FILE__ == $PROGRAM_NAME
-  # We're only concerned with the first argument for now
-  photo_file = ARGV[0]
+  # Expect a list of photo files
+  photo_files = ARGV
 
-  # Use the absolute path of the photo file
-  absolute_path_to_photo = File.absolute_path(photo_file)
+  # Create an array of absolute paths to each photo
+  absolute_paths_to_photos = photo_files.map { |file| File.absolute_path(file) }
 
-  # Write a full HTML page to STDOUT with the <img> tag provided as the
+  # Generate an array of <img> tags
+  img_tags = absolute_paths_to_photos.map { |file| img_tag(file) }
+
+  # Write a full HTML page to STDOUT with the list of <img> tags provided as the
   # content of the page
-  puts html_template( img_tag(absolute_path_to_photo) )
+  puts html_template( img_tags )
 end
 
