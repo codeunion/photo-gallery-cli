@@ -19,7 +19,7 @@ class PhotoGallery
       width: 200px;
       height: 200px;
       padding: 0px;
-      margin-right: 24px;
+      margin: 0px 24px 24px 0px;
       border: 3px solid #ccc;
       border-radius: 2px;
       box-shadow: 3px 3px 5px #ccc;
