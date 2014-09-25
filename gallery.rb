@@ -7,10 +7,11 @@
 # $ ruby gallery.rb image.jpg pic.png funny.gif
 #
 
-def html_template(*content)
-  # Use the heredoc syntax to create a multi-line string for defining the
-  # template of the html page to be generated
-  layout = <<-HTML
+module HTMLGenerator
+  def html_template(*content)
+    # Use the heredoc syntax to create a multi-line string for defining the
+    # template of the html page to be generated
+    layout = <<-HTML
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,15 +22,34 @@ def html_template(*content)
   #{ content.join("\n  ") }
 </body>
 </html>
-  HTML
+    HTML
 
-  layout
+    layout
+  end
+
+  def img_tag(source_file)
+    # Write an HTML <img> tag with the photo file provided
+    # as the value for the src attribute
+    "<img src=\"#{source_file}\">"
+  end
 end
 
-def img_tag(source_file)
-  # Write an HTML <img> tag with the photo file provided
-  # as the value for the src attribute
-  "<img src=\"#{source_file}\">"
+class PhotoGallery
+  include HTMLGenerator
+
+  attr_reader :photos
+
+  def initialize(photos)
+    @photos = photos
+  end
+
+  def to_html
+    # Generate an array of <img> tags
+    images = photos.map { |photo| img_tag(photo) }
+
+    # Return the full HTML template with the images in place
+    html_template( images )
+  end
 end
 
 # Only execute the following code if the program being run is this same file,
@@ -49,11 +69,11 @@ if __FILE__ == $PROGRAM_NAME
   # Create an array of absolute paths to each photo
   absolute_paths_to_photos = photo_files.map { |file| File.absolute_path(file) }
 
-  # Generate an array of <img> tags
-  img_tags = absolute_paths_to_photos.map { |file| img_tag(file) }
+  # Build a new photo gallery
+  gallery = PhotoGallery.new(absolute_paths_to_photos)
 
   # Write a full HTML page to STDOUT with the list of <img> tags provided as the
   # content of the page
-  puts html_template( img_tags )
+  puts gallery.to_html
 end
 
