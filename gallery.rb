@@ -12,6 +12,18 @@ require_relative './lib/html_generator.rb'
 class PhotoGallery
   include HTMLGenerator
 
+  GALLERY_CSS = <<-CSS
+    img {
+      width: 200px;
+      height: 200px;
+      padding: 0px;
+      margin-right: 24px;
+      border: 3px solid #ccc;
+      border-radius: 2px;
+      box-shadow: 3px 3px 5px #ccc;
+    }
+  CSS
+
   attr_reader :photos
 
   def initialize(photos)
@@ -23,7 +35,9 @@ class PhotoGallery
     images = photos.map { |photo| img_tag(photo) }
 
     # Return the full HTML template with the images in place
-    html_template( images )
+    html_template( title: "My Gallery",
+                   custom_css: GALLERY_CSS,
+                   content: images )
   end
 end
 
