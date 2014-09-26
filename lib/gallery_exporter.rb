@@ -1,9 +1,11 @@
 require 'fileutils'
 
 module GalleryExporter
+  IMG_DIRNAME = 'imgs'
+
   def build_directory_struture(target_directory)
     self.export_directory = target_directory
-    self.img_directory = File.join(export_directory, 'imgs')
+    self.img_directory = File.join(export_directory, IMG_DIRNAME)
   end
 
   def copy_photos
@@ -13,9 +15,19 @@ module GalleryExporter
     end
   end
 
-  def copied_photos
+  def copied_photo_paths(opts = {})
+    relative_path = opts.fetch(:relative_path) { true }
+
     # The copied photo files will live in their own image directory
-    @copied_photos ||= img_directory && Dir[ File.join(img_directory, '*') ]
+    photos = img_directory && Dir[ File.join(img_directory, '*') ]
+
+    if relative_path
+      # Return the relative path to the photos
+      photos.map { |abs_path| abs_path.sub(export_directory, '.') }
+    else
+      # Otherwise return the absolute paths
+      photos
+    end
   end
 
   def export_filepath
