@@ -222,6 +222,16 @@ Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on yo
 
 ### [v0.5] Make it look nicer with CSS
 
+Congratulations. You've built a program that is a genuinely useful tool for building a photo gallery web page.
+
+At this point, however, it probably doesn't look very good. Just some photos on a page, no styling or layout at all.
+
+**Write some CSS to improve the styles on your generated gallery page.**
+
+Usually, you would write your CSS in a separate file and then link to that file in your HTML with a `<link>` tag. However, in the interest of keeping things as simple as possible, you can start by writing your CSS directly in your HTML using a `<style>` tag.
+
+At the very least, you should style your `<img>` tags so that they have a better layout. You could also include a `border`. Maybe even a `box-shadow`?
+
 ### [v1.0] Generate a gallery directory
 ```shell
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
