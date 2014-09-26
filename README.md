@@ -115,6 +115,8 @@ If you don't already know how to do this, that is fine. But you will need to do 
 
 Those should kick-start some good information gathering. And you might learn some extra stuff along the way.
 
+When you have finished your own solution, you can take a look at an example solution by checking out the tag v0.1 [TODO: add link to tag v0.1]. Of course, you can also use this solution as inspiration if you are feeling super-duper stuck. But it's usually best to wrestle with the problem for a bit first.
+
 ### [v0.2] Generate an image tag as a string
 
 The next step is to create the smallest possible bit of HTML that we can.
@@ -141,7 +143,11 @@ If you want, you can copy and paste the output into a file, give the file a name
 
 > **PRO TIP**: when searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
 
+Solution to v0.2. [TODO: add link to tag v0.2]
+
 ### [v0.3] Generate a full, valid HTML page
+
+Ok
 ```shell
 $ ruby gallery.rb my-pic.jpg
 ```
