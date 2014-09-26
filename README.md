@@ -21,8 +21,8 @@ The answers to these question will help us identify the key components of what i
 
 Luckily for us, this story isn't _too_ complex. The answers to the above questions are straight-forward:
 
-- The **input** is a set of photograph files.
-- The **output** is a photo gallery rendered on a page of HTML.
+- The **input** is a set of _photograph files_.
+- The **output** is a photo gallery rendered on an _HTML page_.
 
 Now we have to figure out how what goes in the middle. :D And where do we start? With the _simplest possible solution_. Let's get started.
 
@@ -50,27 +50,96 @@ Indeed, even if you know your code is unpolished or incomplete, you may as well 
 
 ## Iterations
 
+It is time to start working. Before you read any further or jump into writing code, take a minute (or five) to sketch out a rough plan for how you would solve this problem. Ask yourself questions like:
+
+- How will this program be used?
+- What are the smaller steps in between the input and output?
+- Which tools (e.g. Ruby methods, UNIX utilities) might be needed?
+
+You may not have clear answers. That is OK. Over time, you will build habits that help lead you to better answers more quickly. The first step is building a habit of asking the right questions.
+
+In the iterations to follow, you will build up to a correct solution by starting small and taking incremental steps. [TODO: link to explanation of diff. between _correct_ and _functional/working_ programs] By the end of version 0.4, you will have written a program that can be executed from the command line like this
+
+```shell
+$ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
+```
+
+...and will output HTML looking something like this
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Gallery</title>
+</head>
+<body>
+  <h1>My Gallery</h1>
+  <img src="/path/to/photos/bunny-1.jpg">
+  <img src="/path/to/photos/bunny-2.jpg">
+  <img src="/path/to/photos/bunny-3.jpg">
+</body>
+</html>
+```
+
+So, where do we start?
+
 ### [v0.1] Output the filename as an absolute path
+
+Take a look at the HTML above. The operative element on this document is the `<img>` tag. This is what a web browser uses to render an image (like a photograph) on a computer screen.
+
+In order to do that, the browser needs to know _where_ to find the image file. The data for the image file does not live directly in the HTML document. Instead, it is a separate file that the browser needs to go fetch.
+
+Since these image files reside on your local computer, the browser just needs to know their _absolute path_. [TODO: add link/entry to glossary]
+
+So, how do we find out the absolute path? That, it turns out, is your first task.
+
+**Write a Ruby program that takes a file and prints out the absolute path to that file**.
+
+For example, if you run this
+
 ```shell
 $ ruby gallery.rb my-pic.jpg
 ```
 
-will output
+it will output this
 
 ```
 /path/to/my-pic.jpg
 ```
 
+If you don't already know how to do this, that is fine. But you will need to do the research on your own to figure it out. Since we are just getting started, and you may still be learning how to research effectively, here are some search queries you might want to try asking the internet:
+
+- What is an absolute path?
+- How to access command-line arguments in Ruby?
+- How to find the absolute path of a file in Ruby?
+
+Those should kick-start some good information gathering. And you might learn some extra stuff along the way.
+
 ### [v0.2] Generate an image tag as a string
+
+The next step is to create the smallest possible bit of HTML that we can.
+
+HTML is a flexible markup language, and it won't get mad if you omit a `<head>` tag or forget to declare your `DOCTYPE`. In fact, if you created a file `page.html` with the content `hi!` and opened it in your browser, your browser will read it without complaining. (Don't believe me? Try it out!)
+
+So, with that in mind, what is the _smallest possible bit_ of HTML that we can write in order to render an image? Well, that would have to be a plain old `<img>` tag.
+
+**Extend your program so that it will print out an `<img>` tag with the given file set as the `src` attribute.**
+
+Now, if you run this command
+
 ```shell
 $ ruby gallery.rb my-pic.jpg
 ```
 
-will output
+it will output
 
 ```
 <img src="/path/to/my-pic.jpg">
 ```
+
+If you want, you can copy and paste the output into a file, give the file a name like `my-pic.html`, and open it in your browser of choice. Does it work? If not, you might want to investigate the `<img>` tag further.
+
+> **PRO TIP**: when searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
 
 ### [v0.3] Generate a full, valid HTML page
 ```shell
