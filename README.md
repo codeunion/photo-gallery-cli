@@ -4,7 +4,25 @@ We're going to write a program that takes a set of images and generates an HTML 
 
 ## Getting Started
 
+To get started, you'll need to
+
+1. Fork this repository to your own GitHub account
+- Open a Terminal and clone this repository to your local computer
+- Navigate to the repository on your local computer
+- Open the repository in Sublime Text
+
+### Files In This Repository
+
+- `gallery.rb` is the source code for this project
+- `photos` is a directory containing sample photos
+
+Example solutions can be found in the `solution` branch [TODO: add link to branch]. There are solutions for all iterations up to and including v1.0 [TODO: add link to tag].
+
 ### Code Reviews and Feedback
+
+Remember, the absolute, tip-top, #1 priority is asking for and receiving feedback on your code. It's better to "fall short" of an iteration and ask for feedback on an incomplete version than it is to get stuck. It's better to ask for feedback on a hacked-together-but-working version than worry about whether it's "polished enough."
+
+Indeed, even if you know your code is unpolished or incomplete, you may as well ask for feedback so that we can be working on that feedback in parallel while you're polishing or completing your code. The worst that could possibly happen is that we give you feedback you are already aware of.
 
 ## Iterations
 
