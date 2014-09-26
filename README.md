@@ -143,11 +143,16 @@ If you want, you can copy and paste the output into a file, give the file a name
 
 > **PRO TIP**: when searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
 
-Solution to v0.2. [TODO: add link to tag v0.2]
+Example solution for v0.2. [TODO: add link to tag v0.2]
 
 ### [v0.3] Generate a full, valid HTML page
 
-Ok
+Now that you can create an image tag successfully, it should not be too difficult to add some more HTML to the mix, making it a valid HTML page with tags like `<title>` and `<body>`.
+
+**Extend your program so that it will print a full HTML page with the image nested inside of the `<body>` tag.**
+
+When you are finished, running this command
+
 ```shell
 $ ruby gallery.rb my-pic.jpg
 ```
@@ -167,12 +172,25 @@ will output
 </html>
 ```
 
+> **HINT**: Even though you are now printing out many tags on many lines, in Ruby you can still treat the HTML as one long string. Ruby offers many ways to represent strings: you may want to check out `heredoc`s and the `%Q()` syntax.
+
 ### [v0.4] Support multiple images
+
+Up until this point, your program has only been working with a single image file. But of course, a photo gallery that can only display a single photograph is not very useful.
+
+Let's remedy that.
+
+**Modify your program so that it accepts many image files as arguments and packs them all neatly into one HTML page.**
+
+In other, more technical words, your program should accept a _variable number of arguments_ (as opposed to before, when it had a _fixed argument length_).
+
+When you're finished, you will be able to run this command
+
 ```shell
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
 ```
 
-will output
+and it will output
 
 ```
 <!DOCTYPE html>
@@ -188,6 +206,19 @@ will output
 </body>
 </html>
 ```
+
+Of course, you can pass the program _any_ number of image files. If you wanted to add all the files in the `photos` directory that end in `.jpg`, you could run this command
+
+```shell
+$ ruby gallery.rb photos/*.jpg
+```
+
+Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on your command line.
+
+> **A Brief Note on Repetition**
+> You may be wondering why we didn't just start at v0.1 with a program that accepted more than one argument, if we knew all along that this is the behavior we wanted. The answer to that question is twofold, and it is a very important part of programming.
+> The first reason is that _you should always solve the simplest case first_. One argument is simpler than many arguments. Therefore, start with one.
+> The second reason is that _computers are really good at doing the same thing over again_. If you can tell a computer to perform a routine once (i.e. "convert this filename into an `<img>` tag for me, please"), it is not difficult to tell it to do the same thing `n` times for `n` arguments.
 
 ### [v0.5] Make it look nicer with CSS
 
