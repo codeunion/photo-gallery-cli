@@ -41,19 +41,23 @@ class PhotoGallery
     # Copy the photo files into the new directory
     copy_photos
 
+    # Get the relative paths for all photos
+    photo_paths = copied_photo_paths(relative_path: true)
+
     # Write to the default HTML file
-    File.write(export_filepath, self.to_html)
+    File.write( export_filepath, self.to_html(photo_paths) )
   end
 
   def photos
-    # If there are any copied photos, use them.
+    # If there are any copied photos, return them.
     # Otherwise, just use the originals.
-    copied_photos || original_photo_files
+    # Will always return _absolute paths_ of the photos
+    copied_photo_paths(relative_path: false) || original_photo_files
   end
 
-  def to_html
+  def to_html(photo_paths = photos)
     # Generate an array of <img> tags
-    images = photos.map { |photo| img_tag(photo) }
+    images = photo_paths.map { |photo| img_tag( photo ) }
 
     # Return the full HTML template with the images in place
     html_template( title: "My Gallery",
