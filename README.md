@@ -2,6 +2,30 @@
 
 We're going to write a program that takes a set of images and generates an HTML image gallery.
 
+Here is a (fake) story to give context to the kind of problem we are going to solve:
+
+> As a professional photographer, I am always publishing new sets of photos to the web for my clients to view. My preferred method is to host a page on my own website and protect it either with a hard-to-guess URL or some authentication. As a result, I am constantly building custom HTML pages in Dreamweaver for my photo shoots. This is tedious and boring. There must be a better way...
+
+Ignoring the melodrama of the above story, can you find the core problem? _As a developer_, your job is to take stories such as this one, identify the ways in which software could help, and then build that software.
+
+Take a moment to think about how you might tackle the problem above given what you know now. If you feel like it, you can sketch your ideas down. Recording your thoughts is a good way to track your progress as you learn, like distance markers on a trail.
+
+In the case of this project, we're going to start by boiling down the story with two simple questions:
+
+- What is the raw material going in (the **input**)?
+- What is the desired result (the **output**)?
+
+Answer the questions for yourself before continuing.
+
+The answers to these question will help us identify the key components of what is needed. Reducing large, complex stories into smaller and simpler component parts is what programming is all about.
+
+Luckily for us, this story isn't _too_ complex. The answers to the above questions are straight-forward:
+
+- The **input** is a set of photograph files.
+- The **output** is a photo gallery rendered on a page of HTML.
+
+Now we have to figure out how what goes in the middle. :D And where do we start? With the _simplest possible solution_. Let's get started.
+
 ## Getting Started
 
 To get started, you'll need to
@@ -126,7 +150,3 @@ Writes index page to index.html with detail pages in a subdirectory, defaults to
 ### [v3.0] gem
  $ gem install https://url.to.gallery.repo.git
  $ gallery photos/*.jpg
-
-## Why Are We Doing This?
-
-### Some Practical Scenarios
