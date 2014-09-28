@@ -366,7 +366,13 @@ $ ls photos/*.jpg | ./gallery.rb > index.html
 $ ls photos/*.jpg | ./gallery.rb | nc -l 7777
 ```
 
-### [v3.0] gem
+### [v3.0] Make it a gem!
+
+RubyGems is the package management and distribution system for the Ruby community. Packaging your program as a gem allows you to publish and share your code with others.
+
+**Read this tutorial on building a gem [TODO: add link to RubyGems tutorial] and then package your own code as a gem.**
+
+Once you've finished, your friends will be able to install the gem on their own computers, like this
 
 ```shell
 # when you install the gem from wherever it is hosted
