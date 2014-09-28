@@ -271,18 +271,47 @@ You will need to learn some new tools to make this work. Use your research skill
 > This is the problem that a good versioning system is intended to mitigate. Up until version 1.0, the **interface** [TODO: add link/term to glossary] of your program can change in all kinds of wacky ways, and that's OK. It is expected to be volatile and undependable. But, as soon as you reach version 1.0, any subsequent changes _should be backwards-compatible with previous 1.x versions_. In other words, using the program as defined in version 1.2 would produce the same outputs for a given input even if you updated to version 1.5 or 1.7.
 > [TODO: add link to semantic versioning site]
 
-### [v1.1] Use ERB templates
+- - -
+
+_Note: subsequent iterations do not have example solutions. You will still have fun and learn a lot by completing them._
+
+### [v1.1] Use ERB templates instead of strings
+
+Now that you have a solid MVP, let's **refactor** [TODO: add link/term to glossary] your code to use some more appropriate and flexible features of Ruby.
+
+In previous iterations, you built HTML by using Ruby's string interpolation (and/or concatenation) tools. This can get clunky and difficult when working with very long strings like full HTML pages.
+
+Luckily for you, the Ruby standard library has a module called **ERB** (for Embedded Ruby [TODO: add link]) which is like string interpolation for whole files.
+
+**Use ERB to define an HTML template for generate new galleries.**
+
+You can put the ERB file in a new directory called `views`, and name it something like `views/gallery-template.html.erb`.
+
+> **A Brief Note on the Binding Object**
+> As you dive into and start learning about ERB, you will come across a very interesting feature of Ruby: the `binding` object. This object is like a container holding all of the variables available in the current scope. If that sounds confusing to you, then this is a great opportunity to explore Ruby by experimenting with `binding` and its relation to ERB.
+> You may not use this object very often in your code, but it is a very useful feature of the language and it is a great way to learn about how Ruby works.
 
 ### [v1.2] File and directory options
+
+It would be useful if, when running this program, the user could specify the names of the HTML file and directory that the program generates.
+
+A good way to build this feature is to allow the program to accept additional arguments, called **options**, which modify the behavior of the program.
+
+For example, you could add a `--file` option to allow a user to decide the name of the HTML file to be generated, like this
+
 ```shell
 $ ruby gallery.rb photos/*.jpg --file pics.html
 ```
-Writes HTML to given file
+
+And/or a `--directory` option to specify the name of the directory generated, like this
 
 ```shell
 $ ruby gallery.rb photos/*.jpg --directory my-photos
 ```
-Writes file [w/ default name] to given directory
+
+**Modify your program so that it accepts command-line options for specifying a file and directory name.**
+
+> **HINT**: Ruby's standard library comes with a module called `OptParse` [TODO: add link]. It may prove useful for you.
 
 ### [v1.3] Index and detail view [multi-page]
 ```shell
