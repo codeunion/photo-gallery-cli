@@ -337,10 +337,42 @@ This might require you to create two separate ERB templates: one for the master 
 
 You can also get creative with this iteration, say by adding a "slideshow" feature where each detail page contains a link to the previous and next photos in the gallery.
 
-### [v2.0] unix utility
- $ ls photos/*.jpg | ./gallery.rb > index.html
- $ ls photos/*.jpg | ./gallery.rb | nc -l 7777
+## Finishing Up
+
+
+
+- - -
+
+## Explore Farther
+
+Hungry for more? Here are two more iteration ideas to get your brain-wheels turning.
+
+### [v2.0] Build a proper UNIX utility script
+
+The UNIX philosophy [TODO: add link] states that good software is composed of programs that have a simple, well-defined function. The value of software comes from the unique interaction between programs, not the programs themselves; you know, "The whole is greater than the sum of its parts" and all that jazz.
+
+One of the key concepts in UNIX is the idea of chaining programs together, often by building a "pipeline" of programs using the UNIX `|` ("pipe") command. A pipeline means that the outputs of one program become the inputs to another.
+
+**Modify your program so that it can be used with a UNIX pipeline.**
+
+To do this, `gallery.rb` needs to be able to read in the names of photo files from `STDIN` and print out the generated HTML to `STDOUT`. Once that is the case, you can run commands like this:
+
+```shell
+# this writes an HTML gallery to the file `index.html`
+$ ls photos/*.jpg | ./gallery.rb > index.html
+
+# what does this do? you'll have fun finding out ;D
+# hint: run `man nc` to read the manual on the `nc` (netcat) command
+$ ls photos/*.jpg | ./gallery.rb | nc -l 7777
+```
 
 ### [v3.0] gem
- $ gem install https://url.to.gallery.repo.git
- $ gallery photos/*.jpg
+
+```shell
+# when you install the gem from wherever it is hosted
+# (most likely GitHub)...
+$ gem install https://url.for.gallery.repo.git
+# ...it gives you access to a `gallery` command that
+# can be executed from _any directory_ on your computer!
+$ gallery photos/*.jpg
+```
