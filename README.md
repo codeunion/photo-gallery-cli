@@ -233,13 +233,47 @@ Usually, you would write your CSS in a separate file and then link to that file 
 At the very least, you should style your `<img>` tags so that they have a better layout. You could also include a `border`. Maybe even a `box-shadow`?
 
 ### [v1.0] Generate a gallery directory
-```shell
-$ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
-$ ruby gallery.rb photos/*.jpg
-```
- #=> all the html
 
-### [v1.1] File and directory options
+You're almost there. To get to v1.0 (a feature-complete implementation of your program), there is one final step.
+
+Up until this point, the generated HTML references the _original image files_ in their _original location_ on your computer. This is not a problem if the HTML will only ever be viewed on your computer, but what happens if you wanted to share that HTML by publishing it on the world wide web? If you push your page up to a website, say `http://www.my-website.com/gallery.html`, and someone visits that site, their browser will download the HTML and attempt to load the image files using their `src` attribute. There's just one problem: the _file paths are for images stored on your computer_, and those photos obviously won't exist on the computers of whoever visits your website.
+
+So, how do we resolve this issue? Think back to what a good MVP (Minimum Viable Product) looks like. We need to deliver a photo gallery that can be easily uploaded to a website. It makes sense that a deliverable package would include both the HTML _and_ the photo files themselves (or, better yet, a copy of them). That way, the HTML can include `<img>` tags that reference the photo files with a **relative path** [TODO: add link/term to glossary] instead of an absolute path. Then, so long as the path from the HTML files to the photo files is maintained wherever the gallery is moved, the photos will load on the page just fine.
+
+**Instead of printing out HTML, modify your program so that it builds a new directory with an HTML file and a copy of all the image files.**
+
+Once you have finished this iteration, running this command
+
+```shell
+$ ruby gallery.rb photos/bunny*.jpg
+```
+
+will create a new directory called with an HTML file inside of it and a subdirectory with copies of each of the photo files. In the example below, running the command will create a directory called `public`:
+
+```
+$ ruby gallery.rb photos/bunny*.jpg
+$ ls public/**
+public/gallery.html
+
+public/imgs:
+bunny-1.jpg bunny-2.jpg bunny-3.jpg bunny-4.jpg
+```
+
+You will need to learn some new tools to make this work. Use your research skills to learn how to do the following in your version of Ruby:
+
+- Create a new directory
+- Create and write to a file
+- Copy files from one directory to another
+
+> **A Brief Note on Versioning**
+> You may have noticed that this iteration alters the _output_ of our program: the previous iterations all printed HTML to the screen, while this iteration creates a new directory and file structure. Nothing is printed to the screen. This is fine for now because you are the only user of this program, but imagine if other programmers had access to an earlier iteration and were using it to do work: this change would likely break other code that _depended upon_ the earlier version of our program to print out HTML.
+> What about future changes? As soon as your program gets into the wild, how do you make updates and improvements without breaking other software that depends on your program?
+> This is the problem that a good versioning system is intended to mitigate. Up until version 1.0, the **interface** [TODO: add link/term to glossary] of your program can change in all kinds of wacky ways, and that's OK. It is expected to be volatile and undependable. But, as soon as you reach version 1.0, any subsequent changes _should be backwards-compatible with previous 1.x versions_. In other words, using the program as defined in version 1.2 would produce the same outputs for a given input even if you updated to version 1.5 or 1.7.
+> [TODO: add link to semantic versioning site]
+
+### [v1.1] Use ERB templates
+
+### [v1.2] File and directory options
 ```shell
 $ ruby gallery.rb photos/*.jpg --file pics.html
 ```
@@ -250,13 +284,13 @@ $ ruby gallery.rb photos/*.jpg --directory my-photos
 ```
 Writes file [w/ default name] to given directory
 
-### [v1.2] Index and detail view [multi-page]
+### [v1.3] Index and detail view [multi-page]
 ```shell
 $ ruby gallery.rb photos/*.jpg --multi-page
 ```
 Writes index page to index.html with detail pages in a subdirectory, defaults to `/pages`
 
-### [v1.3] Use ERB templates
+
 
 
 ### [v2.0] unix utility
