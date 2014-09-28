@@ -339,7 +339,13 @@ You can also get creative with this iteration, say by adding a "slideshow" featu
 
 ## Finishing Up
 
+Congratulations! You worked hard to build your program, and now you can bask in the satisfaction of your accomplishment.
 
+At the end of any project, it is good practice to reflect back on the process and the product.
+
+What did you learn? How would you have done it differently if you could start over? Where would you make improvements or add features? What did you struggle with the most and why?
+
+The answers to these questions will help propel you along your course of learning. Enjoy the journey.
 
 - - -
 
