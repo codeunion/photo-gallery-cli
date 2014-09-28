@@ -250,7 +250,7 @@ $ ruby gallery.rb photos/bunny*.jpg
 
 will create a new directory called with an HTML file inside of it and a subdirectory with copies of each of the photo files. In the example below, running the command will create a directory called `public`:
 
-```
+```shell
 $ ruby gallery.rb photos/bunny*.jpg
 $ ls public/**
 public/gallery.html
@@ -314,13 +314,28 @@ $ ruby gallery.rb photos/*.jpg --directory my-photos
 > **HINT**: Ruby's standard library comes with a module called `OptParse` [TODO: add link]. It may prove useful for you.
 
 ### [v1.3] Index and detail view [multi-page]
+
+The final iteration in the version `1.x` family is to make a more interesting gallery that includes both a _master_ page showing all of the photos as well as _detail_ pages for each photo. Photos on the master page would link to their respective detail pages.
+
+**Add a `--multi-page` option to your program to make it generate a gallery with separate master and detail pages.**
+
+When you are finished, running the command with a `--multi-page` option would generate an index page at `public/index.html` with detail pages in a subdirectory, like this
+
 ```shell
 $ ruby gallery.rb photos/*.jpg --multi-page
+$ ls public/**
+public/index.html
+
+public/photo-pages:
+bunny-1.html bunny-2.html bunny-3.html bunny-4.html
+
+public/imgs:
+bunny-1.jpg bunny-2.jpg bunny-3.jpg bunny-4.jpg
 ```
-Writes index page to index.html with detail pages in a subdirectory, defaults to `/pages`
 
+This might require you to create two separate ERB templates: one for the master page and one for the detail page.
 
-
+You can also get creative with this iteration, say by adding a "slideshow" feature where each detail page contains a link to the previous and next photos in the gallery.
 
 ### [v2.0] unix utility
  $ ls photos/*.jpg | ./gallery.rb > index.html
