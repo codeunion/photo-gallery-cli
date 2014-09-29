@@ -277,7 +277,7 @@ _Note: subsequent iterations do not have example solutions. You will still have 
 
 ### [v1.1] Use ERB templates instead of strings
 
-Now that you have a solid MVP, let's **refactor** [TODO: add link/term to glossary] your code to use some more appropriate and flexible features of Ruby.
+Now that you have a solid MVP, let's [refactor](http://refactoring.com/) your code to use some more appropriate and flexible features of Ruby.
 
 In previous iterations, you built HTML by using Ruby's string interpolation (and/or concatenation) tools. This can get clunky and difficult when working with very long strings like full HTML pages.
 
