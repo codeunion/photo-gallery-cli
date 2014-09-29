@@ -40,7 +40,7 @@ To get started, you'll need to
 - `gallery.rb` is the source code for this project
 - `photos` is a directory containing sample photos
 
-Example solutions can be found in the `solution` branch [TODO: add link to branch]. There are solutions for all iterations up to and including v1.0 [TODO: add link to tag].
+Example solutions can be found in the [solution branch](/tree/solution). There are solutions for all iterations up to and including [v1.0](/tree/v1.0).
 
 ### Code Reviews and Feedback
 
@@ -115,7 +115,7 @@ If you don't already know how to do this, that is fine. But you will need to do 
 
 Those should kick-start some good information gathering. And you might learn some extra stuff along the way.
 
-When you have finished your own solution, you can take a look at an example solution by checking out the tag v0.1 [TODO: add link to tag v0.1]. Of course, you can also use this solution as inspiration if you are feeling super-duper stuck. But it's usually best to wrestle with the problem for a bit first.
+When you have finished your own solution, you can take a look at an example solution by checking out the [v0.1 tag](/tree/v0.1). Of course, you can also use this solution as inspiration if you are feeling super-duper stuck. But it's usually best to wrestle with the problem for a bit first.
 
 ### [v0.2] Generate an image tag as a string
 
@@ -143,7 +143,7 @@ If you want, you can copy and paste the output into a file, give the file a name
 
 > **PRO TIP**: when searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
 
-Example solution for v0.2. [TODO: add link to tag v0.2]
+[Example solution for v0.2](/tree/v0.2).
 
 ### [v0.3] Generate a full, valid HTML page
 
