@@ -3,6 +3,20 @@ require 'fileutils'
 module GalleryExporter
   IMG_DIRNAME = 'imgs'
 
+  def export(export_directory = default_directory_path)
+    # Build directory structure to export into
+    build_directory_struture(export_directory)
+
+    # Copy the photo files into the new directory
+    copy_photos
+
+    # Get the relative paths for all photos
+    photo_paths = copied_photo_paths(relative_path: true)
+
+    # Write to the default HTML file
+    File.write( export_filepath, self.to_html(photo_paths) )
+  end
+
   def build_directory_struture(target_directory)
     self.export_directory = target_directory
     self.img_directory = File.join(export_directory, IMG_DIRNAME)
@@ -53,5 +67,11 @@ module GalleryExporter
     Dir.mkdir(directory) unless Dir.exists?(directory)
 
     @img_directory = directory
+  end
+
+  def default_directory_path
+    # The default save directory is called `public/` and lives in the root path
+    # of the application
+    'public'
   end
 end
