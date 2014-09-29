@@ -281,7 +281,7 @@ Now that you have a solid MVP, let's [refactor](http://refactoring.com/) your co
 
 In previous iterations, you built HTML by using Ruby's string interpolation (and/or concatenation) tools. This can get clunky and difficult when working with very long strings like full HTML pages.
 
-Luckily for you, the Ruby standard library has a module called **ERB** (for Embedded Ruby [TODO: add link]) which is like string interpolation for whole files.
+Luckily for you, the Ruby standard library has a class called [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/ERB.html) (for Embedded Ruby) which is like string interpolation for whole files.
 
 **Use ERB to define an HTML template for generate new galleries.**
 
