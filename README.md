@@ -311,7 +311,7 @@ $ ruby gallery.rb photos/*.jpg --directory my-photos
 
 **Modify your program so that it accepts command-line options for specifying a file and directory name.**
 
-> **HINT**: Ruby's standard library comes with a module called `OptParse` [TODO: add link]. It may prove useful for you.
+> **HINT**: Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful for you.
 
 ### [v1.3] Index and detail view [multi-page]
 
