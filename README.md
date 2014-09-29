@@ -376,7 +376,7 @@ $ ls photos/*.jpg | ./gallery.rb | nc -l 7777
 
 RubyGems is the package management and distribution system for the Ruby community. Packaging your program as a gem allows you to publish and share your code with others.
 
-**Read this tutorial on building a gem [TODO: add link to RubyGems tutorial] and then package your own code as a gem.**
+**Read [this tutorial on building a gem](http://guides.rubygems.org/make-your-own-gem/) and then package your own code as a gem.**
 
 Once you've finished, your friends will be able to install the gem on their own computers, like this
 
