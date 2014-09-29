@@ -355,7 +355,7 @@ Hungry for more? Here are two more iteration ideas to get your brain-wheels turn
 
 ### [v2.0] Build a proper UNIX utility script
 
-The UNIX philosophy [TODO: add link] states that good software is composed of programs that have a simple, well-defined function. The value of software comes from the unique interaction between programs, not the programs themselves; you know, "The whole is greater than the sum of its parts" and all that jazz.
+The [UNIX philosophy](http://en.wikipedia.org/wiki/Unix_philosophy) states that good software is composed of programs that have a simple, well-defined function. The value of software comes from the unique interaction between programs, not the programs themselves; you know, "The whole is greater than the sum of its parts" and all that jazz.
 
 One of the key concepts in UNIX is the idea of chaining programs together, often by building a "pipeline" of programs using the UNIX `|` ("pipe") command. A pipeline means that the outputs of one program become the inputs to another.
 
