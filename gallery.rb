@@ -30,22 +30,16 @@ class PhotoGallery
     }
   CSS
 
+  attr_reader :original_photo_files
+  private :original_photo_files
+
   def initialize(photos)
     @original_photo_files = photos
   end
 
-  def export(export_directory = default_directory_path)
-    # Build directory structure to export into
-    build_directory_struture(export_directory)
-
-    # Copy the photo files into the new directory
-    copy_photos
-
-    # Get the relative paths for all photos
-    photo_paths = copied_photo_paths(relative_path: true)
-
-    # Write to the default HTML file
-    File.write( export_filepath, self.to_html(photo_paths) )
+  def export
+    # export_path = File.expand_path('../public', __FILE__)
+    super#(export_path)
   end
 
   def photos
@@ -63,16 +57,6 @@ class PhotoGallery
     html_template( title: "My Gallery",
                    custom_css: GALLERY_CSS,
                    content: images )
-  end
-
-private
-
-  attr_reader :original_photo_files
-
-  def default_directory_path
-    # The default save directory is called `public/` and lives in the root path
-    # of the application
-    File.expand_path('../public', __FILE__)
   end
 end
 
