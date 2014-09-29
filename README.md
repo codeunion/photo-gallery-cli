@@ -269,7 +269,7 @@ You will need to learn some new tools to make this work. Use your research skill
 > You may have noticed that this iteration alters the _output_ of our program: the previous iterations all printed HTML to the screen, while this iteration creates a new directory and file structure. Nothing is printed to the screen. This is fine for now because you are the only user of this program, but imagine if other programmers had access to an earlier iteration and were using it to do work: this change would likely break other code that _depended upon_ the earlier version of our program to print out HTML.
 > What about future changes? As soon as your program gets into the wild, how do you make updates and improvements without breaking other software that depends on your program?
 > This is the problem that a good versioning system is intended to mitigate. Up until version 1.0, the [interface](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#api-application-programmable-interface) of your program can change in all kinds of wacky ways, and that's OK. It is expected to be volatile and undependable. But, as soon as you reach version 1.0, any subsequent changes _should be backwards-compatible with previous 1.x versions_. In other words, using the program as defined in version 1.2 would produce the same outputs for a given input even if you updated to version 1.5 or 1.7.
-> [TODO: add link to semantic versioning site]
+> For further reading, visit the specification for [Semantic Versioning](http://semver.org/).
 
 - - -
 
