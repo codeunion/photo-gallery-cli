@@ -58,7 +58,7 @@ It is time to start working. Before you read any further or jump into writing co
 
 You may not have clear answers. That is OK. Over time, you will build habits that help lead you to better answers more quickly. The first step is building a habit of asking the right questions.
 
-In the iterations to follow, you will build up to a correct solution by starting small and taking incremental steps. [TODO: link to explanation of diff. between _correct_ and _functional/working_ programs] By the end of version 0.4, you will have written a program that can be executed from the command line like this
+In the iterations to follow, you will build up to a [functionally correct](http://en.wikipedia.org/wiki/Correctness_(computer_science)) solution by starting small and taking incremental steps. By the end of version 0.4, you will have written a program that can be executed from the command line like this
 
 ```shell
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
