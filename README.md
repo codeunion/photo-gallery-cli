@@ -89,7 +89,7 @@ Take a look at the HTML above. The operative element on this document is the `<i
 
 In order to do that, the browser needs to know _where_ to find the image file. The data for the image file does not live directly in the HTML document. Instead, it is a separate file that the browser needs to go fetch.
 
-Since these image files reside on your local computer, the browser just needs to know their _absolute path_. [TODO: add link/entry to glossary]
+Since these image files reside on your local computer, the browser just needs to know their [absolute path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#absolute-path).
 
 So, how do we find out the absolute path? That, it turns out, is your first task.
 
