@@ -22,7 +22,7 @@ The answers to these question will help us identify the key components of what i
 Luckily for us, this story isn't _too_ complex. The answers to the above questions are straight-forward:
 
 - The **input** is a set of _photograph files_.
-- The **output** is a photo gallery rendered on an _HTML page_, [like this](https://raw.githubusercontent.com/codeunion/public-assets/master/images/photo-gallery-cli-page-view.png).
+- The **output** is a photo gallery rendered on an _HTML page_, [like this](https://raw.githubusercontent.com/codeunion/assets/master/images/photo-gallery-cli-page-view.png).
 
 Now we have to figure out how what goes in the middle. :D And where do we start? With the _simplest possible answer_. Let's get started.
 
@@ -232,7 +232,7 @@ At this point, however, it probably doesn't look very good: a few photos on a pa
 
 Here is an example of how a slightly improved page would look:
 
-![img](https://raw.githubusercontent.com/codeunion/public-assets/master/images/photo-gallery-cli-page-view.png)
+![img](https://raw.githubusercontent.com/codeunion/assets/master/images/photo-gallery-cli-page-view.png)
 
 Usually, we would write our CSS in a separate file and then link to that file in our HTML with a `<link>` tag. However, in the interest of keeping things as simple as possible, we can start by writing CSS directly in the HTML using a `<style>` tag.
 
