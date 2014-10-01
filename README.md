@@ -89,7 +89,7 @@ Take a look at the HTML above. The operative element on this document is the `<i
 
 In order to do that, the browser needs to know _where_ to find the image file. The data for the image file does not live directly in the HTML document. Instead, it is a separate file that the browser needs to go fetch.
 
-Since these image files reside on your local computer, the browser just needs to know their [absolute path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#absolute-path).
+Since these image files reside on your local computer, the browser needs to know their [absolute path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#absolute-path).
 
 So, how do we find out the absolute path? That, it turns out, is our first task.
 
@@ -107,7 +107,7 @@ it will output this
 /path/to/my-pic.jpg
 ```
 
-If you don't already know how to do this, that is fine. But you will need to do the research on your own to figure it out. Since we are just getting started, and you may still be learning how to research effectively, here are some search queries you might want to try asking the internet:
+If you don't already know how to do this, that is fine. But you will need to do the research on your own to figure it out. Since we are getting started, and you may still be learning how to research effectively, here are some search queries you might want to try asking the internet:
 
 - What is an absolute path?
 - How to access command-line arguments in Ruby?
@@ -216,7 +216,7 @@ $ ruby gallery.rb photos/*.jpg
 Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on your command line.
 
 > **A Brief Note on Repetition**
-> You may be wondering why we didn't just start at v0.1 with a program that accepted more than one argument, if we knew all along that this is the behavior we wanted. The answer to that question is twofold, and it is a very important part of programming.
+> You may be wondering why we didn't start at v0.1 with a program that accepted more than one argument, if we knew all along that this is the behavior we wanted. The answer to that question is twofold, and it is a very important part of programming.
 > The first reason is that _a programmer should always solve the simplest case first_. One argument is simpler than many arguments. Therefore, start with one.
 > The second reason is that _computers are really good at doing the same thing over again_. If we can tell a computer to perform a routine once (i.e. "convert this filename into an `<img>` tag for me, please"), it is not difficult to tell it to do the same thing `n` times for `n` arguments.
 
@@ -224,7 +224,7 @@ Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on yo
 
 Congratulations. You've built a program that is a genuinely useful tool for building a photo gallery web page.
 
-At this point, however, it probably doesn't look very good. Just some photos on a page, no styling or layout at all.
+At this point, however, it probably doesn't look very good: a few photos on a page, with no styling or layout at all.
 
 **Write some CSS to improve the styles on the generated gallery page.**
 
@@ -236,9 +236,9 @@ At the very least, we should style our `<img>` tags so that they have a better l
 
 We're almost there. To get to v1.0 (a feature-complete implementation of our program), there is one final step.
 
-Up until this point, the generated HTML references the _original image files_ in their _original location_ on your computer. This is not a problem if the HTML will only ever be viewed on your computer, but what happens if you wanted to share that HTML by publishing it on the world wide web? If you push your page up to a website, say `http://www.my-website.com/gallery.html`, and someone visits that site, their browser will download the HTML and attempt to load the image files using their `src` attribute. There's just one problem: the _file paths are for images stored on your computer_, and those photos obviously won't exist on the computers of whoever visits your website.
+Up until this point, the generated HTML references the _original image files_ in their _original location_ on your computer. This is not a problem if the HTML will only ever be viewed on your computer, but what happens if you wanted to share that HTML by publishing it on the world wide web? If you push your page up to a website, say `http://www.my-website.com/gallery.html`, and someone visits that site, their browser will download the HTML and attempt to load the image files using their `src` attribute. There is one problem: the _file paths are for images stored on your computer_, and those photos obviously won't exist on the computers of whoever visits your website.
 
-So, how do we resolve this issue? Think back to what a good MVP (Minimum Viable Product) looks like. We need to deliver a photo gallery that can be easily uploaded to a website. It makes sense that a deliverable package would include both the HTML _and_ the photo files themselves (or, better yet, a copy of them). That way, the HTML can include `<img>` tags that reference the photo files with a [relative path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#relative-path) instead of an absolute path. Then, so long as the path from the HTML files to the photo files is maintained wherever the gallery is moved, the photos will load on the page just fine.
+So, how do we resolve this issue? Think back to what a good MVP (Minimum Viable Product) looks like. We need to deliver a photo gallery that can be easily uploaded to a website. It makes sense that a deliverable package would include both the HTML _and_ the photo files themselves (or, better yet, a copy of them). That way, the HTML can include `<img>` tags that reference the photo files with a [relative path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#relative-path) instead of an absolute path. Then, so long as the path from the HTML files to the photo files is maintained wherever the gallery is moved, the photos will load on the page.
 
 **Instead of printing out HTML, modify the program so that it builds a new directory with an HTML file and a copy of all the image files.**
 
