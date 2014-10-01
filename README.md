@@ -24,7 +24,7 @@ Luckily for us, this story isn't _too_ complex. The answers to the above questio
 - The **input** is a set of _photograph files_.
 - The **output** is a photo gallery rendered on an _HTML page_.
 
-Now we have to figure out how what goes in the middle. :D And where do we start? With the _simplest possible solution_. Let's get started.
+Now we have to figure out how what goes in the middle. :D And where do we start? With the _simplest possible answer_. Let's get started.
 
 ## Getting Started
 
@@ -40,7 +40,7 @@ To get started, you'll need to
 - `gallery.rb` is the source code for this project
 - `photos` is a directory containing sample photos
 
-There are solutions for all iterations up to and including [v1.0](../../tree/iterations/v1.0).
+There is example code for all iterations up to and including [v1.0](../../tree/iterations/v1.0).
 
 ### Code Reviews and Feedback
 
@@ -58,7 +58,7 @@ It is time to start working. Before you read any further or jump into writing co
 
 You may not have clear answers. That is OK. Over time, you will build habits that help lead you to better answers more quickly. The first step is building a habit of asking the right questions.
 
-In the iterations to follow, you will build up to a [functionally correct](http://en.wikipedia.org/wiki/Correctness_(computer_science)) solution by starting small and taking incremental steps. By the end of version 0.4, you will have written a program that can be executed from the command line like this
+In the iterations to follow, you will build up to a [functionally correct](http://en.wikipedia.org/wiki/Correctness_(computer_science)) answer by starting small and taking incremental steps. By the end of version 0.4, you will have written a program that can be executed from the command line like this
 
 ```shell
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
@@ -115,7 +115,7 @@ If you don't already know how to do this, that is fine. But you will need to do 
 
 Those should kick-start some good information gathering. And you might learn some extra stuff along the way.
 
-When you have finished your own solution, you can take a look at an example solution by checking out the [v0.1 tag](../../tree/iterations/v0.1). Of course, you can also use this solution as inspiration if you are feeling super-duper stuck. But it's usually best to wrestle with the problem for a bit first.
+When you have finished your own answer, you can view example code by checking out [iteration v0.1](../../tree/iterations/v0.1). Of course, you can also use this example as inspiration if you are feeling super-duper stuck. But it's usually best to wrestle with the problem for a bit first.
 
 ### [v0.2] Generate an image tag as a string
 
@@ -143,7 +143,7 @@ If you want, you can copy and paste the output into a file, give the file a name
 
 > **PRO TIP**: when searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
 
-[Example solution for v0.2](../../tree/iterations/v0.2).
+[Example code for v0.2](../../tree/iterations/v0.2).
 
 ### [v0.3] Generate a full, valid HTML page
 
@@ -273,7 +273,7 @@ You will need to learn some new tools to make this work. Use your research skill
 
 - - -
 
-_Note: subsequent iterations do not have example solutions. You will still have fun and learn a lot by completing them._
+_Note: subsequent iterations do not have example code. You will still have fun and learn a lot by completing them._
 
 ### [v1.1] Use ERB templates instead of strings
 
