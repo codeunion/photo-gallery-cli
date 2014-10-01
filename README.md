@@ -60,7 +60,7 @@ You may not have clear answers. That is OK. Over time, you will build habits tha
 
 In the iterations to follow, we will build up to a [functionally correct](http://en.wikipedia.org/wiki/Correctness_(computer_science)) answer by starting small and taking incremental steps. By the end of version 0.4, we will have written a program that can be executed from the command line like this
 
-```shell
+```sh
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
 ```
 
@@ -97,7 +97,7 @@ So, how do we find out the absolute path? That, it turns out, is our first task.
 
 For example, if we run this
 
-```shell
+```sh
 $ ruby gallery.rb my-pic.jpg
 ```
 
@@ -129,7 +129,7 @@ So, with that in mind, what is the _smallest possible bit_ of HTML that we can w
 
 Now, if we run this command
 
-```shell
+```sh
 $ ruby gallery.rb my-pic.jpg
 ```
 
@@ -153,7 +153,7 @@ Now that we can create an image tag successfully, it should not be too difficult
 
 When we are finished, running this command
 
-```shell
+```sh
 $ ruby gallery.rb my-pic.jpg
 ```
 
@@ -186,7 +186,7 @@ In other, more technical words, the program should accept a _variable number of 
 
 When we're finished, we will be able to run this command
 
-```shell
+```sh
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
 ```
 
@@ -209,7 +209,7 @@ and it will output
 
 Of course, we can pass the program _any_ number of image files. If you wanted to add all the files in the `photos` directory that end in `.jpg`, you could run this command
 
-```shell
+```sh
 $ ruby gallery.rb photos/*.jpg
 ```
 
@@ -244,13 +244,13 @@ So, how do we resolve this issue? Think back to what a good MVP (Minimum Viable 
 
 Once we have finished this iteration, running this command
 
-```shell
+```sh
 $ ruby gallery.rb photos/bunny*.jpg
 ```
 
 will create a new directory called with an HTML file inside of it and a subdirectory with copies of each of the photo files. In the example below, running the command will create a directory called `public`:
 
-```shell
+```sh
 $ ruby gallery.rb photos/bunny*.jpg
 $ ls public/**
 public/gallery.html
@@ -299,13 +299,13 @@ A good way to build this feature is to allow the program to accept additional ar
 
 For example, we could add a `--file` option to allow a user to decide the name of the HTML file to be generated, like this
 
-```shell
+```sh
 $ ruby gallery.rb photos/*.jpg --file pics.html
 ```
 
 And/or a `--directory` option to specify the name of the directory generated, like this
 
-```shell
+```sh
 $ ruby gallery.rb photos/*.jpg --directory my-photos
 ```
 
@@ -321,7 +321,7 @@ The final iteration in the version `1.x` family is to make a more interesting ga
 
 When we are finished, running the command with a `--multi-page` option would generate an index page at `public/index.html` with detail pages in a subdirectory, like this
 
-```shell
+```sh
 $ ruby gallery.rb photos/*.jpg --multi-page
 $ ls public/**
 public/index.html
@@ -363,7 +363,7 @@ One of the key concepts in UNIX is the idea of chaining programs together, often
 
 To do this, `gallery.rb` needs to be able to read in the names of photo files from `STDIN` and print out the generated HTML to `STDOUT`. Once that is the case, we can run commands like this:
 
-```shell
+```sh
 # this writes an HTML gallery to the file `index.html`
 $ ls photos/*.jpg | ./gallery.rb > index.html
 
@@ -380,7 +380,7 @@ RubyGems is the package management and distribution system for the Ruby communit
 
 Once you've finished, your friends will be able to install the gem on their own computers, like this
 
-```shell
+```sh
 # when you install the gem from wherever it is hosted
 # (most likely GitHub)...
 $ gem install https://url.for.gallery.repo.git
