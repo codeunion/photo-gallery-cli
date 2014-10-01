@@ -58,7 +58,7 @@ It is time to start working. Before you read any further or jump into writing co
 
 You may not have clear answers. That is OK. Over time, you will build habits that help lead you to better answers more quickly. The first step is building a habit of asking the right questions.
 
-In the iterations to follow, you will build up to a [functionally correct](http://en.wikipedia.org/wiki/Correctness_(computer_science)) answer by starting small and taking incremental steps. By the end of version 0.4, you will have written a program that can be executed from the command line like this
+In the iterations to follow, we will build up to a [functionally correct](http://en.wikipedia.org/wiki/Correctness_(computer_science)) answer by starting small and taking incremental steps. By the end of version 0.4, we will have written a program that can be executed from the command line like this
 
 ```shell
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
@@ -91,11 +91,11 @@ In order to do that, the browser needs to know _where_ to find the image file. T
 
 Since these image files reside on your local computer, the browser just needs to know their [absolute path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#absolute-path).
 
-So, how do we find out the absolute path? That, it turns out, is your first task.
+So, how do we find out the absolute path? That, it turns out, is our first task.
 
 **Write a Ruby program that takes a file and prints out the absolute path to that file**.
 
-For example, if you run this
+For example, if we run this
 
 ```shell
 $ ruby gallery.rb my-pic.jpg
@@ -121,13 +121,13 @@ When you have finished your own answer, you can view example code by checking ou
 
 The next step is to create the smallest possible bit of HTML that we can.
 
-HTML is a flexible markup language, and it won't get mad if you omit a `<head>` tag or forget to declare your `DOCTYPE`. In fact, if you created a file `page.html` with the content `hi!` and opened it in your browser, your browser will read it without complaining. (Don't believe me? Try it out!)
+HTML is a flexible markup language, and it won't get mad if we omit a `<head>` tag or forget to declare our `DOCTYPE`. In fact, if we created a file `page.html` with the content `hi!` and opened it in our browser, our browser will read it without complaining. (Don't believe me? Try it out!)
 
 So, with that in mind, what is the _smallest possible bit_ of HTML that we can write in order to render an image? Well, that would have to be a plain old `<img>` tag.
 
-**Extend your program so that it will print out an `<img>` tag with the given file set as the `src` attribute.**
+**Extend the program so that it will print out an `<img>` tag with the given file set as the `src` attribute.**
 
-Now, if you run this command
+Now, if we run this command
 
 ```shell
 $ ruby gallery.rb my-pic.jpg
@@ -147,11 +147,11 @@ If you want, you can copy and paste the output into a file, give the file a name
 
 ### [v0.3] Generate a full, valid HTML page
 
-Now that you can create an image tag successfully, it should not be too difficult to add some more HTML to the mix, making it a valid HTML page with tags like `<title>` and `<body>`.
+Now that we can create an image tag successfully, it should not be too difficult to add some more HTML to the mix, making it a valid HTML page with tags like `<title>` and `<body>`.
 
-**Extend your program so that it will print a full HTML page with the image nested inside of the `<body>` tag.**
+**Extend the program so that it will print a full HTML page with the image nested inside of the `<body>` tag.**
 
-When you are finished, running this command
+When we are finished, running this command
 
 ```shell
 $ ruby gallery.rb my-pic.jpg
@@ -172,19 +172,19 @@ will output
 </html>
 ```
 
-> **HINT**: Even though you are now printing out many tags on many lines, in Ruby you can still treat the HTML as one long string. Ruby offers many ways to represent strings: you may want to check out `heredoc`s and the `%Q()` syntax.
+> **HINT**: Even though we are now printing out many tags on many lines, in Ruby we can still treat the HTML as one long string. Ruby offers many ways to represent strings: you may want to check out `heredoc`s and the `%Q()` syntax.
 
 ### [v0.4] Support multiple images
 
-Up until this point, your program has only been working with a single image file. But of course, a photo gallery that can only display a single photograph is not very useful.
+Up until this point, our program has only been working with a single image file. But of course, a photo gallery that can only display a single photograph is not very useful.
 
 Let's remedy that.
 
-**Modify your program so that it accepts many image files as arguments and packs them all neatly into one HTML page.**
+**Modify the program so that it accepts many image files as arguments and packs them all neatly into one HTML page.**
 
-In other, more technical words, your program should accept a _variable number of arguments_ (as opposed to before, when it had a _fixed argument length_).
+In other, more technical words, the program should accept a _variable number of arguments_ (as opposed to before, when it had a _fixed argument length_).
 
-When you're finished, you will be able to run this command
+When we're finished, we will be able to run this command
 
 ```shell
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
@@ -207,7 +207,7 @@ and it will output
 </html>
 ```
 
-Of course, you can pass the program _any_ number of image files. If you wanted to add all the files in the `photos` directory that end in `.jpg`, you could run this command
+Of course, we can pass the program _any_ number of image files. If you wanted to add all the files in the `photos` directory that end in `.jpg`, you could run this command
 
 ```shell
 $ ruby gallery.rb photos/*.jpg
@@ -217,8 +217,8 @@ Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on yo
 
 > **A Brief Note on Repetition**
 > You may be wondering why we didn't just start at v0.1 with a program that accepted more than one argument, if we knew all along that this is the behavior we wanted. The answer to that question is twofold, and it is a very important part of programming.
-> The first reason is that _you should always solve the simplest case first_. One argument is simpler than many arguments. Therefore, start with one.
-> The second reason is that _computers are really good at doing the same thing over again_. If you can tell a computer to perform a routine once (i.e. "convert this filename into an `<img>` tag for me, please"), it is not difficult to tell it to do the same thing `n` times for `n` arguments.
+> The first reason is that _a programmer should always solve the simplest case first_. One argument is simpler than many arguments. Therefore, start with one.
+> The second reason is that _computers are really good at doing the same thing over again_. If we can tell a computer to perform a routine once (i.e. "convert this filename into an `<img>` tag for me, please"), it is not difficult to tell it to do the same thing `n` times for `n` arguments.
 
 ### [v0.5] Make it look nicer with CSS
 
@@ -226,23 +226,23 @@ Congratulations. You've built a program that is a genuinely useful tool for buil
 
 At this point, however, it probably doesn't look very good. Just some photos on a page, no styling or layout at all.
 
-**Write some CSS to improve the styles on your generated gallery page.**
+**Write some CSS to improve the styles on the generated gallery page.**
 
-Usually, you would write your CSS in a separate file and then link to that file in your HTML with a `<link>` tag. However, in the interest of keeping things as simple as possible, you can start by writing your CSS directly in your HTML using a `<style>` tag.
+Usually, we would write our CSS in a separate file and then link to that file in our HTML with a `<link>` tag. However, in the interest of keeping things as simple as possible, we can start by writing CSS directly in the HTML using a `<style>` tag.
 
-At the very least, you should style your `<img>` tags so that they have a better layout. You could also include a `border`. Maybe even a `box-shadow`?
+At the very least, we should style our `<img>` tags so that they have a better layout. We could also include a `border`. Maybe even a `box-shadow`?
 
 ### [v1.0] Generate a gallery directory
 
-You're almost there. To get to v1.0 (a feature-complete implementation of your program), there is one final step.
+We're almost there. To get to v1.0 (a feature-complete implementation of our program), there is one final step.
 
 Up until this point, the generated HTML references the _original image files_ in their _original location_ on your computer. This is not a problem if the HTML will only ever be viewed on your computer, but what happens if you wanted to share that HTML by publishing it on the world wide web? If you push your page up to a website, say `http://www.my-website.com/gallery.html`, and someone visits that site, their browser will download the HTML and attempt to load the image files using their `src` attribute. There's just one problem: the _file paths are for images stored on your computer_, and those photos obviously won't exist on the computers of whoever visits your website.
 
 So, how do we resolve this issue? Think back to what a good MVP (Minimum Viable Product) looks like. We need to deliver a photo gallery that can be easily uploaded to a website. It makes sense that a deliverable package would include both the HTML _and_ the photo files themselves (or, better yet, a copy of them). That way, the HTML can include `<img>` tags that reference the photo files with a [relative path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#relative-path) instead of an absolute path. Then, so long as the path from the HTML files to the photo files is maintained wherever the gallery is moved, the photos will load on the page just fine.
 
-**Instead of printing out HTML, modify your program so that it builds a new directory with an HTML file and a copy of all the image files.**
+**Instead of printing out HTML, modify the program so that it builds a new directory with an HTML file and a copy of all the image files.**
 
-Once you have finished this iteration, running this command
+Once we have finished this iteration, running this command
 
 ```shell
 $ ruby gallery.rb photos/bunny*.jpg
@@ -273,19 +273,19 @@ You will need to learn some new tools to make this work. Use your research skill
 
 - - -
 
-_Note: subsequent iterations do not have example code. You will still have fun and learn a lot by completing them._
+_Note: subsequent iterations do not have example code. We will still have fun and learn a lot by completing them._
 
 ### [v1.1] Use ERB templates instead of strings
 
-Now that you have a solid MVP, let's [refactor](http://refactoring.com/) your code to use some more appropriate and flexible features of Ruby.
+Now that we have a solid MVP, let's [refactor](http://refactoring.com/) our code to use some more appropriate and flexible features of Ruby.
 
-In previous iterations, you built HTML by using Ruby's string interpolation (and/or concatenation) tools. This can get clunky and difficult when working with very long strings like full HTML pages.
+In previous iterations, we built HTML by using Ruby's string interpolation (and/or concatenation) tools. This can get clunky and difficult when working with very long strings like full HTML pages.
 
-Luckily for you, the Ruby standard library has a class called [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/ERB.html) (for Embedded Ruby) which is like string interpolation for whole files.
+Luckily for us, the Ruby standard library has a class called [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/ERB.html) (for Embedded Ruby) which is like string interpolation for whole files.
 
 **Use ERB to define an HTML template for generate new galleries.**
 
-You can put the ERB file in a new directory called `views`, and name it something like `views/gallery-template.html.erb`.
+We can put the ERB file in a new directory called `views`, and name it something like `views/gallery-template.html.erb`.
 
 > **A Brief Note on the Binding Object**
 > As you dive into and start learning about ERB, you will come across a very interesting feature of Ruby: the `binding` object. This object is like a container holding all of the variables available in the current scope. If that sounds confusing to you, then this is a great opportunity to explore Ruby by experimenting with `binding` and its relation to ERB.
@@ -297,7 +297,7 @@ It would be useful if, when running this program, the user could specify the nam
 
 A good way to build this feature is to allow the program to accept additional arguments, called **options**, which modify the behavior of the program.
 
-For example, you could add a `--file` option to allow a user to decide the name of the HTML file to be generated, like this
+For example, we could add a `--file` option to allow a user to decide the name of the HTML file to be generated, like this
 
 ```shell
 $ ruby gallery.rb photos/*.jpg --file pics.html
@@ -309,17 +309,17 @@ And/or a `--directory` option to specify the name of the directory generated, li
 $ ruby gallery.rb photos/*.jpg --directory my-photos
 ```
 
-**Modify your program so that it accepts command-line options for specifying a file and directory name.**
+**Modify the program so that it accepts command-line options for specifying a file and directory name.**
 
-> **HINT**: Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful for you.
+> **HINT**: Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful.
 
 ### [v1.3] Index and detail view [multi-page]
 
 The final iteration in the version `1.x` family is to make a more interesting gallery that includes both a _master_ page showing all of the photos as well as _detail_ pages for each photo. Photos on the master page would link to their respective detail pages.
 
-**Add a `--multi-page` option to your program to make it generate a gallery with separate master and detail pages.**
+**Add a `--multi-page` option to the program to make it generate a gallery with separate master and detail pages.**
 
-When you are finished, running the command with a `--multi-page` option would generate an index page at `public/index.html` with detail pages in a subdirectory, like this
+When we are finished, running the command with a `--multi-page` option would generate an index page at `public/index.html` with detail pages in a subdirectory, like this
 
 ```shell
 $ ruby gallery.rb photos/*.jpg --multi-page
@@ -333,9 +333,9 @@ public/imgs:
 bunny-1.jpg bunny-2.jpg bunny-3.jpg bunny-4.jpg
 ```
 
-This might require you to create two separate ERB templates: one for the master page and one for the detail page.
+This might require the creation of two separate ERB templates: one for the master page and one for the detail page.
 
-You can also get creative with this iteration, say by adding a "slideshow" feature where each detail page contains a link to the previous and next photos in the gallery.
+We can also get creative with this iteration, say by adding a "slideshow" feature where each detail page contains a link to the previous and next photos in the gallery.
 
 ## Finishing Up
 
@@ -359,9 +359,9 @@ The [UNIX philosophy](http://en.wikipedia.org/wiki/Unix_philosophy) states that 
 
 One of the key concepts in UNIX is the idea of chaining programs together, often by building a "pipeline" of programs using the UNIX `|` ("pipe") command. A pipeline means that the outputs of one program become the inputs to another.
 
-**Modify your program so that it can be used with a UNIX pipeline.**
+**Modify the program so that it can be used with a UNIX pipeline.**
 
-To do this, `gallery.rb` needs to be able to read in the names of photo files from `STDIN` and print out the generated HTML to `STDOUT`. Once that is the case, you can run commands like this:
+To do this, `gallery.rb` needs to be able to read in the names of photo files from `STDIN` and print out the generated HTML to `STDOUT`. Once that is the case, we can run commands like this:
 
 ```shell
 # this writes an HTML gallery to the file `index.html`
