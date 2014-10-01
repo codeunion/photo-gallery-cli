@@ -348,9 +348,14 @@ We can also get creative with this iteration, say by adding a "slideshow" featur
 
 Congratulations! You worked hard to build your program, and now you can bask in the satisfaction of your accomplishment.
 
+One of the primary goals of this project is to learn how to **identify a goal and build incrementally towards that goal**. The operative skill in executing this effectively is the skill of [decomposition](http://en.wikipedia.org/wiki/Decomposition_(computer_science)): breaking a complex problem into simpler parts. If you can do this well--if you can see difficult problems as nothing more than a series of less-difficult problems--you will be able to accomplish great things with software. Do you feel more competent now than at the start?
+
 At the end of any project, it is good practice to reflect back on the process and the product.
 
-What did you learn? How would you have done it differently if you could start over? Where would you make improvements or add features? What did you struggle with the most and why?
+- What did you learn?
+- How would you have done it differently if you could start over?
+- Where would you make improvements or add features?
+- What did you struggle with the most and why?
 
 The answers to these questions will help propel you along your course of learning. Enjoy the journey.
 
