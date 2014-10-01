@@ -141,7 +141,8 @@ it will output
 
 If you want, you can copy and paste the output into a file, give the file a name like `my-pic.html`, and open it in your browser of choice. Does it work? If not, you might want to investigate the `<img>` tag further.
 
-> **PRO TIP**: when searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
+> **PRO TIP**<br>
+> When searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
 
 [Example code for v0.2](../../tree/iterations/v0.2).
 
@@ -172,7 +173,8 @@ will output
 </html>
 ```
 
-> **HINT**: Even though we are now printing out many tags on many lines, in Ruby we can still treat the HTML as one long string. Ruby offers many ways to represent strings: you may want to check out `heredoc`s and the `%Q()` syntax.
+> **HINT**<br>
+> Even though we are now printing out many tags on many lines, in Ruby we can still treat the HTML as one long string. Ruby offers many ways to represent strings: you may want to check out `heredoc`s and the `%Q()` syntax.
 
 ### [v0.4] Support multiple images
 
@@ -215,9 +217,9 @@ $ ruby gallery.rb photos/*.jpg
 
 Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on your command line.
 
-> **A Brief Note on Repetition**
-> You may be wondering why we didn't start at v0.1 with a program that accepted more than one argument, if we knew all along that this is the behavior we wanted. The answer to that question is twofold, and it is a very important part of programming.
-> The first reason is that _a programmer should always solve the simplest case first_. One argument is simpler than many arguments. Therefore, start with one.
+> **A Brief Note on Repetition**<br>
+> You may be wondering why we didn't start at v0.1 with a program that accepted more than one argument, if we knew all along that this is the behavior we wanted. The answer to that question is twofold, and it is a very important part of programming.<br>
+> The first reason is that _a programmer should always solve the simplest case first_. One argument is simpler than many arguments. Therefore, start with one.<br>
 > The second reason is that _computers are really good at doing the same thing over again_. If we can tell a computer to perform a routine once (i.e. "convert this filename into an `<img>` tag for me, please"), it is not difficult to tell it to do the same thing `n` times for `n` arguments.
 
 ### [v0.5] Make it look nicer with CSS
@@ -265,10 +267,10 @@ You will need to learn some new tools to make this work. Use your research skill
 - Create and write to a file
 - Copy files from one directory to another
 
-> **A Brief Note on Versioning**
-> You may have noticed that this iteration alters the _output_ of our program: the previous iterations all printed HTML to the screen, while this iteration creates a new directory and file structure. Nothing is printed to the screen. This is fine for now because you are the only user of this program, but imagine if other programmers had access to an earlier iteration and were using it to do work: this change would likely break other code that _depended upon_ the earlier version of our program to print out HTML.
-> What about future changes? As soon as your program gets into the wild, how do you make updates and improvements without breaking other software that depends on your program?
-> This is the problem that a good versioning system is intended to mitigate. Up until version 1.0, the [interface](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#api-application-programmable-interface) of your program can change in all kinds of wacky ways, and that's OK. It is expected to be volatile and undependable. But, as soon as you reach version 1.0, any subsequent changes _should be backwards-compatible with previous 1.x versions_. In other words, using the program as defined in version 1.2 would produce the same outputs for a given input even if you updated to version 1.5 or 1.7.
+> **A Brief Note on Versioning**<br>
+> You may have noticed that this iteration alters the _output_ of our program: the previous iterations all printed HTML to the screen, while this iteration creates a new directory and file structure. Nothing is printed to the screen. This is fine for now because you are the only user of this program, but imagine if other programmers had access to an earlier iteration and were using it to do work: this change would likely break other code that _depended upon_ the earlier version of our program to print out HTML.<br>
+> What about future changes? As soon as your program gets into the wild, how do you make updates and improvements without breaking other software that depends on your program?<br>
+> This is the problem that a good versioning system is intended to mitigate. Up until version 1.0, the [interface](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#api-application-programmable-interface) of your program can change in all kinds of wacky ways, and that's OK. It is expected to be volatile and undependable. But, as soon as you reach version 1.0, any subsequent changes _should be backwards-compatible with previous 1.x versions_. In other words, using the program as defined in version 1.2 would produce the same outputs for a given input even if you updated to version 1.5 or 1.7.<br>
 > For further reading, visit the specification for [Semantic Versioning](http://semver.org/).
 
 - - -
@@ -287,8 +289,8 @@ Luckily for us, the Ruby standard library has a class called [ERB](http://ruby-d
 
 We can put the ERB file in a new directory called `views`, and name it something like `views/gallery-template.html.erb`.
 
-> **A Brief Note on the Binding Object**
-> As you dive into and start learning about ERB, you will come across a very interesting feature of Ruby: the `binding` object. This object is like a container holding all of the variables available in the current scope. If that sounds confusing to you, then this is a great opportunity to explore Ruby by experimenting with `binding` and its relation to ERB.
+> **A Brief Note on the Binding Object**<br>
+> As you dive into and start learning about ERB, you will come across a very interesting feature of Ruby: the `binding` object. This object is like a container holding all of the variables available in the current scope. If that sounds confusing to you, then this is a great opportunity to explore Ruby by experimenting with `binding` and its relation to ERB.<br>
 > You may not use this object very often in your code, but it is a very useful feature of the language and it is a great way to learn about how Ruby works.
 
 ### [v1.2] File and directory options
@@ -311,7 +313,8 @@ $ ruby gallery.rb photos/*.jpg --directory my-photos
 
 **Modify the program so that it accepts command-line options for specifying a file and directory name.**
 
-> **HINT**: Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful.
+> **HINT**<br>
+> Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful.
 
 ### [v1.3] Index and detail view [multi-page]
 
