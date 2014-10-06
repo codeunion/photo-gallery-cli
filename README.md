@@ -66,7 +66,7 @@ $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
 
 ...and will output HTML looking something like this
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +103,7 @@ $ ruby gallery.rb my-pic.jpg
 
 it will output this
 
-```
+```text
 /path/to/my-pic.jpg
 ```
 
@@ -135,7 +135,7 @@ $ ruby gallery.rb my-pic.jpg
 
 it will output
 
-```
+```html
 <img src="/path/to/my-pic.jpg">
 ```
 
@@ -160,7 +160,7 @@ $ ruby gallery.rb my-pic.jpg
 
 will output
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,7 +194,7 @@ $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
 
 and it will output
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
