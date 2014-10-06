@@ -188,7 +188,7 @@ In other, more technical words, the program should accept a _variable number of 
 
 When we're finished, we will be able to run this command
 
-```sh
+```console
 $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
 ```
 
