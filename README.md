@@ -24,18 +24,18 @@ The answers to these question will help us identify the key components of what i
 Luckily for us, this story isn't _too_ complex. The answers to the above questions are straight-forward:
 
 - The **input** is a set of _photograph files_.
-- The **output** is a photo gallery rendered on an _HTML page_, [like this](https://raw.githubusercontent.com/codeunion/assets/master/images/photo-gallery-cli-page-view.png).
+- The **output** is a photo gallery rendered on an _HTML page_.  Here's [a screenshot of an example photo gallery page](https://raw.githubusercontent.com/codeunion/assets/master/images/photo-gallery-cli-page-view.png).
 
-Now we have to figure out how what goes in the middle. :D And where do we start? With the _simplest possible answer_. Let's get started.
+Now we have to figure out how what goes in the middle! Let's get started.
 
 ## Getting Started
 
 To get started, you'll need to
 
-1. Fork this repository to your own GitHub account
+- Fork this repository to your own GitHub account
 - Open a Terminal and clone this repository to your local computer
-- Navigate to the repository on your local computer
-- Open the repository in Sublime Text
+- Navigate to the repository directory on your local computer
+- Open the repository directory with [Sublime Text 3](http://www.sublimetext.com/3), [Atom](https://atom.io/), or your editor of choice.
 
 ### Files In This Repository
 
@@ -76,9 +76,9 @@ $ ruby gallery.rb photos/bunny-1.jpg photos/bunny-2.jpg photos/bunny-3.jpg
 </head>
 <body>
   <h1>My Gallery</h1>
-  <img src="/path/to/photos/bunny-1.jpg">
-  <img src="/path/to/photos/bunny-2.jpg">
-  <img src="/path/to/photos/bunny-3.jpg">
+  <img src="/absolute/path/to/photos/bunny-1.jpg">
+  <img src="/absolute/path/to/photos/bunny-2.jpg">
+  <img src="/absolute/path/to/photos/bunny-3.jpg">
 </body>
 </html>
 ```
@@ -87,29 +87,27 @@ So, where do we start?
 
 ### [v0.1] Output the filename as an absolute path
 
-Take a look at the HTML above. The operative element on this document is the `<img>` tag. This is what a web browser uses to render an image (like a photograph) on a computer screen.
+Take a look at the HTML above. The key element on this document is the `<img>` tag. The `<img>` tag is how a browser knows to display an image (like your photosgraphs) when it loads a webpage.
 
-In order to do that, the browser needs to know _where_ to find the image file. The data for the image file does not live directly in the HTML document. Instead, it is a separate file that the browser needs to go fetch.
+In order to do that, the browser needs to know _where_ to find the image file. The data for the image file does not live directly in the HTML document. Instead, it is a separate file that the browser needs to download.
 
 Since these image files reside on your local computer, the browser needs to know their [absolute path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#absolute-path).
 
-So, how do we find out the absolute path? That, it turns out, is our first task.
+So, how do we find out the absolute path? That, it turns out, is our first task: write a Ruby program that takes the name of a file as input and outputs the absolute path to that file.
 
-**Write a Ruby program that takes a file and prints out the absolute path to that file**.
-
-For example, if we run this
+For example, if we run this inside the `/Users/tanner/photo-gallery` directory
 
 ```console
 $ ruby gallery.rb my-pic.jpg
 ```
 
-it will output this
+it should output
 
 ```text
-/path/to/my-pic.jpg
+/Users/tanner/photo-gallery/my-pic.jpg
 ```
 
-If you don't already know how to do this, that is fine. But you will need to do the research on your own to figure it out. Since we are getting started, and you may still be learning how to research effectively, here are some search queries you might want to try asking the internet:
+If you don't already know how to do this, that is fine. But you will need to do the research on your own to figure it out. Since we are getting started, and you may still be learning how to research effectively, here are some search queries you might want to try:
 
 - What is an absolute path?
 - How to access command-line arguments in Ruby?
@@ -119,7 +117,7 @@ Those should kick-start some good information gathering. And you might learn som
 
 When you have finished your own answer, you can view example code by checking out [iteration v0.1](../../tree/iterations/v0.1). Of course, you can also use this example as inspiration if you are feeling super-duper stuck. But it's usually best to wrestle with the problem for a bit first.
 
-### [v0.2] Generate an image tag as a string
+### [v0.2] Output a full image tag (`<img>`)
 
 The next step is to create the smallest possible bit of HTML that we can.
 
@@ -127,9 +125,7 @@ HTML is a flexible markup language, and it won't get mad if we omit a `<head>` t
 
 So, with that in mind, what is the _smallest possible bit_ of HTML that we can write in order to render an image? Well, that would have to be a plain old `<img>` tag.
 
-**Extend the program so that it will print out an `<img>` tag with the given file set as the `src` attribute.**
-
-Now, if we run this command
+Extend your previous iteration so that so that it will print out an `<img>` tag with the absolute path to the file set as the `src` attribute.  That means if you run this command
 
 ```console
 $ ruby gallery.rb my-pic.jpg
@@ -138,13 +134,14 @@ $ ruby gallery.rb my-pic.jpg
 it will output
 
 ```html
-<img src="/path/to/my-pic.jpg">
+<img src="/absolute/path/to/my-pic.jpg">
 ```
 
 If you want, you can copy and paste the output into a file, give the file a name like `my-pic.html`, and open it in your browser of choice. Does it work? If not, you might want to investigate the `<img>` tag further.
 
-> **PRO TIP**<br>
-> When searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
+**Hint**
+
+When searching for information about HTML (or the DOM, or JavaScript), prefix your queries with `mdn` (for "Mozilla Developer Network"). They're the best in the business.
 
 [Example code for v0.2](../../tree/iterations/v0.2).
 
@@ -152,7 +149,7 @@ If you want, you can copy and paste the output into a file, give the file a name
 
 Now that we can create an image tag successfully, it should not be too difficult to add some more HTML to the mix, making it a valid HTML page with tags like `<title>` and `<body>`.
 
-**Extend the program so that it will print a full HTML page with the image nested inside of the `<body>` tag.**
+Extend the program so that it will print a full HTML page with the image nested inside of the `<body>` tag.
 
 When we are finished, running this command
 
@@ -170,13 +167,14 @@ will output
 </head>
 <body>
   <h1>My Gallery</h1>
-  <img src="/path/to/my-pic.jpg">
+  <img src="/absolute/path/to/my-pic.jpg">
 </body>
 </html>
 ```
 
-> **HINT**<br>
-> Even though we are now printing out many tags on many lines, in Ruby we can still treat the HTML as one long string. Ruby offers many ways to represent strings: you may want to check out `heredoc`s and the `%Q()` syntax.
+**Hint**
+
+Even though we are now printing out many tags on many lines, in Ruby we can still treat the HTML as one long string. Ruby offers many ways to represent strings: you may want to check out Ruby's [here document](http://en.wikibooks.org/wiki/Ruby_Programming/Here_documents) and the [%Q{}](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Literals#The_.25_Notation) syntax for strings.
 
 ### [v0.4] Support multiple images
 
@@ -204,25 +202,20 @@ and it will output
 </head>
 <body>
   <h1>My Gallery</h1>
-  <img src="/path/to/photos/bunny-1.jpg">
-  <img src="/path/to/photos/bunny-2.jpg">
-  <img src="/path/to/photos/bunny-3.jpg">
+  <img src="/absolute/path/to/photos/bunny-1.jpg">
+  <img src="/absolute/path/to/photos/bunny-2.jpg">
+  <img src="/absolute/path/to/photos/bunny-3.jpg">
 </body>
 </html>
 ```
 
 Of course, we can pass the program _any_ number of image files. If you wanted to add all the files in the `photos` directory that end in `.jpg`, you could run this command
 
-```sh
+```console
 $ ruby gallery.rb photos/*.jpg
 ```
 
 Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on your command line.
-
-> **A Brief Note on Repetition**<br>
-> You may be wondering why we didn't start at v0.1 with a program that accepted more than one argument, if we knew all along that this is the behavior we wanted. The answer to that question is twofold, and it is a very important part of programming.<br>
-> The first reason is that _a programmer should always solve the simplest case first_. One argument is simpler than many arguments. Therefore, start with one.<br>
-> The second reason is that _computers are really good at doing the same thing over again_. If we can tell a computer to perform a routine once (i.e. "convert this filename into an `<img>` tag for me, please"), it is not difficult to tell it to do the same thing `n` times for `n` arguments.
 
 ### [v0.5] Make it look nicer with CSS
 
@@ -265,6 +258,7 @@ public/gallery.html
 
 public/imgs:
 bunny-1.jpg bunny-2.jpg bunny-3.jpg bunny-4.jpg
+$
 ```
 
 You will need to learn some new tools to make this work. Use your research skills to learn how to do the following in your version of Ruby:
@@ -273,15 +267,9 @@ You will need to learn some new tools to make this work. Use your research skill
 - Create and write to a file
 - Copy files from one directory to another
 
-> **A Brief Note on Versioning**<br>
-> You may have noticed that this iteration alters the _output_ of our program: the previous iterations all printed HTML to the screen, while this iteration creates a new directory and file structure. Nothing is printed to the screen. This is fine for now because you are the only user of this program, but imagine if other programmers had access to an earlier iteration and were using it to do work: this change would likely break other code that _depended upon_ the earlier version of our program to print out HTML.<br>
-> What about future changes? As soon as your program gets into the wild, how do you make updates and improvements without breaking other software that depends on your program?<br>
-> This is the problem that a good versioning system is intended to mitigate. Up until version 1.0, the [interface](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#api-application-programmable-interface) of your program can change in all kinds of wacky ways, and that's OK. It is expected to be volatile and undependable. But, as soon as you reach version 1.0, any subsequent changes _should be backwards-compatible with previous 1.x versions_. In other words, using the program as defined in version 1.2 would produce the same outputs for a given input even if you updated to version 1.5 or 1.7.<br>
-> For further reading, visit the specification for [Semantic Versioning](http://semver.org/).
-
 - - -
 
-_Note: subsequent iterations do not have example code. We will still have fun and learn a lot by completing them._
+**Note**: the remaining iterations do not have any example code. We will still have fun and learn a lot by completing them.
 
 ### [v1.1] Use ERB templates instead of strings
 
@@ -291,13 +279,9 @@ In previous iterations, we built HTML by using Ruby's string interpolation (and/
 
 Luckily for us, the Ruby standard library has a class called [ERB](http://ruby-doc.org/stdlib/libdoc/erb/rdoc/ERB.html) (for Embedded Ruby) which is like string interpolation for whole files.
 
-**Use ERB to define an HTML template for generate new galleries.**
+Use ERB to define an HTML template for generate new galleries.
 
 We can put the ERB file in a new directory called `views`, and name it something like `views/gallery-template.html.erb`.
-
-> **A Brief Note on the Binding Object**<br>
-> As you dive into and start learning about ERB, you will come across a very interesting feature of Ruby: the `binding` object. This object is like a container holding all of the variables available in the current scope. If that sounds confusing to you, then this is a great opportunity to explore Ruby by experimenting with `binding` and its relation to ERB.<br>
-> You may not use this object very often in your code, but it is a very useful feature of the language and it is a great way to learn about how Ruby works.
 
 ### [v1.2] File and directory options
 
@@ -319,8 +303,9 @@ $ ruby gallery.rb photos/*.jpg --directory my-photos
 
 **Modify the program so that it accepts command-line options for specifying a file and directory name.**
 
-> **HINT**<br>
-> Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful.
+**HINT**
+
+Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful.
 
 ### [v1.3] Index and detail view [multi-page]
 
