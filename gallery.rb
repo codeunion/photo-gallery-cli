@@ -35,8 +35,10 @@ def html_template(content)
   </style>
 </head>
 <body>
-  <h1>My Gallery</h1>
-  #{content}
+  <div class="container">
+    <h1>My Gallery</h1>
+    #{content}
+  </div>
 </body>
 </html>
 HTML
