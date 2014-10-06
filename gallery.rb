@@ -1,6 +1,6 @@
 def html_template(content)
   # Use the heredoc syntax to create a multi-line string for defining the
-  # template of the html page to be generated
+  # template of the html page to be generated.
   layout = <<-HTML
 <!DOCTYPE html>
 <html>
@@ -12,14 +12,14 @@ def html_template(content)
   #{content}
 </body>
 </html>
-  HTML
+HTML
 
   layout
 end
 
 def img_tag(source_file)
   # Write an HTML <img> tag with the photo file provided
-  # as the value for the src attribute
+  # as the value for the src attribute.
   "<img src=\"#{source_file}\">"
 end
 
@@ -42,6 +42,5 @@ if __FILE__ == $PROGRAM_NAME
 
   # Write a full HTML page to STDOUT with the <img> tag provided as the
   # content of the page
-  puts html_template( img_tag(absolute_path_to_photo) )
+  puts html_template(img_tag(absolute_path_to_photo))
 end
-
