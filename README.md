@@ -87,7 +87,7 @@ So, where do we start?
 
 ### [v0.1] Output the filename as an absolute path
 
-Take a look at the HTML above. The key element on this document is the `<img>` tag. The `<img>` tag is how a browser knows to display an image (like your photosgraphs) when it loads a webpage.
+Take a look at the HTML above. The key element on this document is the `<img>` tag. The `<img>` tag is how a browser knows to display an image (like your photosgraphs) when it loads a webpage.  It's worth reading the [MDN page for the <img> tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img).
 
 In order to do that, the browser needs to know _where_ to find the image file. The data for the image file does not live directly in the HTML document. Instead, it is a separate file that the browser needs to download.
 
@@ -119,13 +119,8 @@ When you have finished your own answer, you can view example code by checking ou
 
 ### [v0.2] Output a full image tag (`<img>`)
 
-The next step is to create the smallest possible bit of HTML that we can.
+The next step is to create the smallest possible bit of HTML that we can.  We will extend our existing program so that so that it will print out an `<img>` tag with the absolute path to the file set as the `src` attribute.  That means if you run this command
 
-HTML is a flexible markup language, and it won't get mad if we omit a `<head>` tag or forget to declare our `DOCTYPE`. In fact, if we created a file `page.html` with the content `hi!` and opened it in our browser, our browser will read it without complaining. (Don't believe me? Try it out!)
-
-So, with that in mind, what is the _smallest possible bit_ of HTML that we can write in order to render an image? Well, that would have to be a plain old `<img>` tag.
-
-Extend your previous iteration so that so that it will print out an `<img>` tag with the absolute path to the file set as the `src` attribute.  That means if you run this command
 
 ```console
 $ ruby gallery.rb my-pic.jpg
@@ -137,6 +132,8 @@ it will output
 <img src="/absolute/path/to/my-pic.jpg">
 ```
 
+This is just a stepping stone on the way to printing out multiple such `<img>` tags.
+
 If you want, you can copy and paste the output into a file, give the file a name like `my-pic.html`, and open it in your browser of choice. Does it work? If not, you might want to investigate the `<img>` tag further.
 
 **Hint**
@@ -147,9 +144,7 @@ When searching for information about HTML (or the DOM, or JavaScript), prefix yo
 
 ### [v0.3] Generate a full, valid HTML page
 
-Now that we can create an image tag successfully, it should not be too difficult to add some more HTML to the mix, making it a valid HTML page with tags like `<title>` and `<body>`.
-
-Extend the program so that it will print a full HTML page with the image nested inside of the `<body>` tag.
+Now that we can create an image tag successfully, it should not be too difficult to add some more HTML to the mix, making it a valid HTML page with tags like `<title>` and `<body>`. Let's extend the program so that it will print a full HTML page with the image nested inside of the `<body>` tag.
 
 When we are finished, running this command
 
@@ -180,11 +175,7 @@ Even though we are now printing out many tags on many lines, in Ruby we can stil
 
 Up until this point, our program has only been working with a single image file. But of course, a photo gallery that can only display a single photograph is not very useful.
 
-Let's remedy that.
-
-**Modify the program so that it accepts many image files as arguments and packs them all neatly into one HTML page.**
-
-In other, more technical words, the program should accept a _variable number of arguments_ (as opposed to before, when it had a _fixed argument length_).
+Let's remedy that by extending out program so that it accepts many image file names as arguments and prints out an HTML document with one `<img>` tag for every argument.
 
 When we're finished, we will be able to run this command
 
@@ -209,7 +200,9 @@ and it will output
 </html>
 ```
 
-Of course, we can pass the program _any_ number of image files. If you wanted to add all the files in the `photos` directory that end in `.jpg`, you could run this command
+In other, more technical words, the program should accept a _variable number of arguments_ (as opposed to before, when it had a _fixed argument length_).
+
+This means we can pass the program _any_ number of image files. If we wanted to add all the files in the `photos` directory that end in `.jpg`, we could run this command
 
 ```console
 $ ruby gallery.rb photos/*.jpg
@@ -219,29 +212,24 @@ Nifty, huh? To see what that `*` is doing, try running `echo photos/*.jpg` on yo
 
 ### [v0.5] Make it look nicer with CSS
 
-Congratulations. You've built a program that is a genuinely useful tool for building a photo gallery web page.
+Congratulations. You've built a program that is a genuinely useful tool for building a photo gallery web page.  We're well on our way, but it would be nice to make it look more like a photo gallery!
 
-At this point, however, it probably doesn't look very good: a few photos on a page, with no styling or layout at all.
+The overall look of a page is called _styling_ and we can change a page's styling by using _Cascading Style Sheets_ or CSS. Let's add some CSS to improve the styles on the generated gallery page.
 
-**Write some CSS to improve the styles on the generated gallery page.**
-
-Here is an example of how a slightly improved page would look:
+Here is an example of how a slightly improved page might look:
 
 ![img](https://raw.githubusercontent.com/codeunion/assets/master/images/photo-gallery-cli-page-view.png)
 
-Usually, we would write our CSS in a separate file and then link to that file in our HTML with a `<link>` tag. However, in the interest of keeping things as simple as possible, we can start by writing CSS directly in the HTML using a `<style>` tag.
-
-At the very least, we should style our `<img>` tags so that they have a better layout. We could also include a `border`. Maybe even a `box-shadow`?
+At the very least, we should style our [<img> tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) so that they have a better layout. We could also include a [border](https://developer.mozilla.org/en-US/docs/Web/CSS/border). Maybe even a [box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)?
 
 ### [v1.0] Generate a gallery directory
 
-We're almost there. To get to v1.0 (a feature-complete implementation of our program), there is one final step.
+We're almost there. To get to v1.0 (a feature-complete implementation of our program), there is one final step.  Instead of printing out HTML, let's modify the program so that it creates a self-contained directory containing all the HTML documents and images we need to display the gallery.  This will make it possible to upload or share.
 
 Up until this point, the generated HTML references the _original image files_ in their _original location_ on your computer. This is not a problem if the HTML will only ever be viewed on your computer, but what happens if you wanted to share that HTML by publishing it on the world wide web? If you push your page up to a website, say `http://www.my-website.com/gallery.html`, and someone visits that site, their browser will download the HTML and attempt to load the image files using their `src` attribute. There is one problem: the _file paths are for images stored on your computer_, and those photos obviously won't exist on the computers of whoever visits your website.
 
 So, how do we resolve this issue? Think back to what a good MVP (Minimum Viable Product) looks like. We need to deliver a photo gallery that can be easily uploaded to a website. It makes sense that a deliverable package would include both the HTML _and_ the photo files themselves (or, better yet, a copy of them). That way, the HTML can include `<img>` tags that reference the photo files with a [relative path](https://github.com/codeunion/fundamentals-of-web-development/wiki/Glossary#relative-path) instead of an absolute path. Then, so long as the path from the HTML files to the photo files is maintained wherever the gallery is moved, the photos will load on the page.
 
-**Instead of printing out HTML, modify the program so that it builds a new directory with an HTML file and a copy of all the image files.**
 
 Once we have finished this iteration, running this command
 
@@ -285,9 +273,9 @@ We can put the ERB file in a new directory called `views`, and name it something
 
 ### [v1.2] File and directory options
 
-It would be useful if, when running this program, the user could specify the names of the HTML file and directory that the program generates.
+It would be useful if, when running this program, the user could specify the names of the HTML file and directory that the program generates.  A good way to build this feature is to allow the program to accept additional arguments, called **options**, which modify the behavior of the program.
 
-A good way to build this feature is to allow the program to accept additional arguments, called **options**, which modify the behavior of the program.
+Let's modify the program so that it accepts command-line options for specifying a file and directory name.
 
 For example, we could add a `--file` option to allow a user to decide the name of the HTML file to be generated, like this
 
@@ -301,8 +289,6 @@ And/or a `--directory` option to specify the name of the directory generated, li
 $ ruby gallery.rb photos/*.jpg --directory my-photos
 ```
 
-**Modify the program so that it accepts command-line options for specifying a file and directory name.**
-
 **HINT**
 
 Ruby's standard library comes with a class called [OptionParser](http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/OptionParser.html). It may prove useful.
@@ -311,7 +297,7 @@ Ruby's standard library comes with a class called [OptionParser](http://ruby-doc
 
 The final iteration in the version `1.x` family is to make a more interesting gallery that includes both a _master_ page showing all of the photos as well as _detail_ pages for each photo. Photos on the master page would link to their respective detail pages.
 
-**Add a `--multi-page` option to the program to make it generate a gallery with separate master and detail pages.**
+Let's add a `--multi-page` option to the program to make it generate a gallery with separate master and detail pages.
 
 When we are finished, running the command with a `--multi-page` option would generate an index page at `public/index.html` with detail pages in a subdirectory, like this
 
@@ -352,30 +338,11 @@ The answers to these questions will help propel you along your course of learnin
 
 Hungry for more? Here are two more iteration ideas to get your brain-wheels turning.
 
-### [v2.0] Build a proper UNIX utility script
-
-The [UNIX philosophy](http://en.wikipedia.org/wiki/Unix_philosophy) states that good software is composed of programs that have a simple, well-defined function. The value of software comes from the unique interaction between programs, not the programs themselves; you know, "The whole is greater than the sum of its parts" and all that jazz.
-
-One of the key concepts in UNIX is the idea of chaining programs together, often by building a "pipeline" of programs using the UNIX `|` ("pipe") command. A pipeline means that the outputs of one program become the inputs to another.
-
-**Modify the program so that it can be used with a UNIX pipeline.**
-
-To do this, `gallery.rb` needs to be able to read in the names of photo files from `STDIN` and print out the generated HTML to `STDOUT`. Once that is the case, we can run commands like this:
-
-```console
-# this writes an HTML gallery to the file `index.html`
-$ ls photos/*.jpg | ./gallery.rb > index.html
-
-# what does this do? you'll have fun finding out ;D
-# hint: run `man nc` to read the manual on the `nc` (netcat) command
-$ ls photos/*.jpg | ./gallery.rb | nc -l 7777
-```
-
-### [v3.0] Make it a gem!
+### [v2.0] Make it a gem!
 
 RubyGems is the package management and distribution system for the Ruby community. Packaging your program as a gem allows you to publish and share your code with others.
 
-**Read [this tutorial on building a gem](http://guides.rubygems.org/make-your-own-gem/) and then package your own code as a gem.**
+Read [this tutorial on building a gem](http://guides.rubygems.org/make-your-own-gem/) and then package your own code as a gem.
 
 Once you've finished, your friends will be able to install the gem on their own computers, like this
 
