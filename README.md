@@ -4,11 +4,13 @@ We're going to write a program that takes a set of images and generates an HTML 
 
 Here is a (fake) story to give context to the kind of problem we are going to solve:
 
-> As a professional photographer, I am always publishing new sets of photos to the web for my clients to view. My preferred method is to host a page on my own website and protect it either with a hard-to-guess URL or some authentication. As a result, I am constantly building custom HTML pages in Dreamweaver for my photo shoots. This is tedious and boring. There must be a better way...
+> I'm a professional photographer and have my own personal website.  Whenever I take a new batch of photos, I like to select the best examples, use Dreamweaver create a new "gallery" page on my website, and upload the updated version of my website to my website host.
+>
+> Each gallery page is mostly the same, but it takes me 15-45 minutes after each shoot to select the photos, create the page, make whatever small edits I might want to make, and upload it.  The process is tedious, very manual, and error-prone.
 
-Ignoring the melodrama of the above story, can you find the core problem? _As a developer_, your job is to take stories such as this one, identify the ways in which software could help, and then build that software.
+Can you identify this hypothetical photographer's core problem? _As a developer_, your job is to take stories such as this one, identify the ways in which software could help, and then build that software.
 
-Take a moment to think about how you might tackle the problem above given what you know now. If you feel like it, you can sketch your ideas down. Recording your thoughts is a good way to track your progress as you learn, like distance markers on a trail.
+Take a moment to think about how you might tackle the problem above given what you know now. If you feel like it, you can sketch your ideas down.
 
 In the case of this project, we're going to start by boiling down the story with two simple questions:
 
