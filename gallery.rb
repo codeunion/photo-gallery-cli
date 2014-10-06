@@ -1,3 +1,4 @@
+
 #
 # HTML Photo Gallery Generator
 # ---
@@ -7,83 +8,105 @@
 # $ ruby gallery.rb image.jpg pic.png funny.gif
 #
 
-require_relative './lib/html_generator.rb'
-require_relative './lib/gallery_exporter.rb'
+require "fileutils"
 
-class PhotoGallery
-  include HTMLGenerator
-  include GalleryExporter
+def html_template(content)
+  layout = <<-HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Gallery</title>
+  <style type="text/css" media="screen">
+    body {
+      font-family: "Helvetica", sans-serif;
+    }
 
-  # We don't want these utility methods to be part of the public interface
-  private *HTMLGenerator.instance_methods
-  private *GalleryExporter.instance_methods
+    .container {
+      margin: 0 auto;
+      width: 720px;
+    }
 
-  GALLERY_CSS = <<-CSS
     img {
       width: 200px;
       height: 200px;
       padding: 0px;
-      margin: 0px 24px 24px 0px;
+      margin-right: 24px;
       border: 3px solid #ccc;
       border-radius: 2px;
       box-shadow: 3px 3px 5px #ccc;
     }
-  CSS
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>My Gallery</h1>
+    #{content}
+  </div>
+</body>
+</html>
+HTML
 
-  attr_reader :original_photo_files
-  private :original_photo_files
+  layout
+end
 
-  def initialize(photos)
-    @original_photo_files = photos
+def img_tag(source_file)
+  "<img src=\"#{source_file}\">"
+end
+
+def img_tag_list(source_files)
+  img_tags = []
+
+  source_files.each do |source_file|
+    img_tags.push(img_tag(source_file))
   end
 
-  def export
-    # export_path = File.expand_path('../public', __FILE__)
-    super#(export_path)
+  img_tags
+end
+
+# For a photo in "/path/to/photo.jpg" we need the HTML to contain
+# <img src="images/photo.jpg"> since we'll be moving photo.jpg to that
+# directory.
+def html_file_paths(dirname, file_paths)
+  html_paths = []
+
+  file_paths.each do |path|
+    html_paths.push(File.join(dirname, File.basename(path)))
   end
 
-  def photos
-    # If there are any copied photos, return them.
-    # Otherwise, just use the originals.
-    # Will always return _absolute paths_ of the photos
-    copied_photo_paths(relative_path: false) || original_photo_files
-  end
+  html_paths
+end
 
-  def to_html(photo_paths = photos)
-    # Generate an array of <img> tags
-    images = photo_paths.map { |photo| img_tag( photo ) }
-
-    # Return the full HTML template with the images in place
-    html_template( title: "My Gallery",
-                   custom_css: GALLERY_CSS,
-                   content: images )
+# Did you know we can put '!' at the end of a method name?
+# Seems weird, but Ruby treats it like any other character. It often signals
+# that a method does something irreversable or destructive.
+def create_dir_if_needed!(dirname)
+  unless Dir.exist?(dirname)
+    Dir.mkdir(dirname)
   end
 end
 
-# Only execute the following code if the program being run is this same file,
-# i.e. this will only run if you enter the command
-#
-#   $ ruby gallery.rb some-photo.jpg
-#
-# in the command line.
-#
-# This way, if other programs want to use the utility functions declared
-# in this file, they can `require` the file _without_ actually executing
-# the code below, which expects an argument and writes to STDOUT.
+def build_gallery(gallery_dir, file_paths)
+  images_dir = File.join(gallery_dir, "images")
+  index_file = File.join(gallery_dir, "index.html")
+
+  create_dir_if_needed!(gallery_dir)
+  create_dir_if_needed!(images_dir)
+
+  file_paths.each do |file_path|
+    FileUtils.cp(file_path, images_dir)
+  end
+
+  html_paths = html_file_paths("images", file_paths)
+
+  content = img_tag_list(html_paths).join("\n")
+
+  File.write(index_file, html_template(content))
+end
+
 if __FILE__ == $PROGRAM_NAME
-  # Expect a list of photo files
-  photo_files = ARGV
+  # Expect a list of photo files as command line arguments.
+  # Remember: ARGV will be an Array of Strings - one per argument.
+  file_paths = ARGV
 
-  # Create an array of absolute paths to each photo
-  absolute_paths_to_photos = photo_files.map { |file| File.absolute_path(file) }
-
-  # Build a new photo gallery
-  gallery = PhotoGallery.new(absolute_paths_to_photos)
-
-  # Export a full HTML page to the default directory with the list of <img> tags
-  # provided as the content of the page
-  gallery.export
-
-  # Exit process with a success message
-  exit 0
+  build_gallery("gallery", file_paths)
 end
