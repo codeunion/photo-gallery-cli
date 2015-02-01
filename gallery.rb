@@ -94,20 +94,25 @@ def tests
 
 end
 
-
-if __FILE__ == $PROGRAM_NAME
-  #Creates the array of cli arguments specifying the photo files
-  photo_files = ARGV
-  #Sends the ARGV array to method thats gets full path
+def build_gallery(photo_files)
+  #Uses the ARGV array
   list_file_paths = full_path_array(photo_files)
+  #creating directory structure
+  directory_structure
+  #copying photo files to public/imgs
   copy_files(list_file_paths)
   #Builds the image tags from the array of full file photo paths
   image_tags = img_tags_list
   #joins the array of img tags for normalization into the html template
   html_img_tags = image_tags.join("\n")
-  #creating directory
-  directory_structure
   #Puts the img tags in the html heredoc template
   create_html_file(html_template(html_img_tags))
+end
+
+if __FILE__ == $PROGRAM_NAME
+  #Creates the array of cli arguments specifying the photo files
+  photo_files = ARGV
+  #build the photo gallery
+  build_gallery(photo_files)
   #p tests
 end
